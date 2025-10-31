@@ -6,7 +6,6 @@ from random import randint
 from typing import Annotated
 
 from agent_framework.azure import AzureOpenAIChatClient
-from azure.identity import AzureCliCredential
 from pydantic import Field
 
 """
@@ -30,10 +29,12 @@ async def non_streaming_example() -> None:
     print("=== Non-streaming Response Example ===")
 
     # Create agent with Azure Chat Client
-    # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
-    # authentication option.
+    # Using API key for authentication
     agent = AzureOpenAIChatClient(
-        credential=AzureCliCredential(), api_version=os.environ["AZURE_OPENAI_API_VERSION"]
+        endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
+        deployment_name=os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"],
+        api_key=os.environ["AZURE_OPENAI_API_KEY"],
+        api_version=os.environ["AZURE_OPENAI_API_VERSION"]
     ).create_agent(
         instructions="You are a helpful weather agent.",
         tools=get_weather,
@@ -50,10 +51,12 @@ async def streaming_example() -> None:
     print("=== Streaming Response Example ===")
 
     # Create agent with Azure Chat Client
-    # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
-    # authentication option.
+    # Using API key for authentication
     agent = AzureOpenAIChatClient(
-        credential=AzureCliCredential(), api_version=os.environ["AZURE_OPENAI_API_VERSION"]
+        endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
+        deployment_name=os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"],
+        api_key=os.environ["AZURE_OPENAI_API_KEY"],
+        api_version=os.environ["AZURE_OPENAI_API_VERSION"]
     ).create_agent(
         instructions="You are a helpful weather agent.",
         tools=get_weather,

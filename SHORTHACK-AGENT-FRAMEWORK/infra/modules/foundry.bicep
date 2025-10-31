@@ -1,7 +1,8 @@
 param location string
 param openAiAccountName string = 'oai-${uniqueString(resourceGroup().id)}'
 param openAiDeploymentName string = 'gpt-4o'
-param openAiApiVersion string = '2024-05-13'
+param openAiModelVersion string = '2024-05-13'
+param openAiApiVersion string = '2024-10-21'
 
 resource openAiAccount 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   name: openAiAccountName
@@ -23,7 +24,7 @@ resource openAiDeployment 'Microsoft.CognitiveServices/accounts/deployments@2023
     model: {
       format: 'OpenAI'
       name: 'gpt-4o'
-      version: openAiApiVersion
+      version: openAiModelVersion
     }
   }
   sku: {
