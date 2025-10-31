@@ -6,7 +6,7 @@ Welcome to the **Microsoft Agent Framework Training Workshop**! This repository 
 
 This training is designed to take you from zero to building sophisticated multi-agent systems in approximately **3 hours**. Through progressive, hands-on exercises, you'll learn to create, configure, and orchestrate AI agents that can solve complex tasks.
 
-### What You'll Learn
+### What You'll LearnX
 
 - **Phase 1**: Agent Fundamentals - Create and run your first agent
 - **Phase 2**: Function Tools - Extend agent capabilities with custom tools
