@@ -1,11 +1,11 @@
 # Copyright (c) Microsoft. All rights reserved.
 
 import asyncio
-import os
 from random import randint
 from typing import Annotated
 
 from agent_framework.azure import AzureOpenAIChatClient
+from azure.identity import AzureCliCredential
 from pydantic import Field
 
 """
@@ -14,7 +14,8 @@ Azure OpenAI Chat Client Basic Example
 This sample demonstrates basic usage of AzureOpenAIChatClient for direct chat-based
 interactions, showing both streaming and non-streaming responses.
 """
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def get_weather(
     location: Annotated[str, Field(description="The location to get the weather for.")],
@@ -29,13 +30,9 @@ async def non_streaming_example() -> None:
     print("=== Non-streaming Response Example ===")
 
     # Create agent with Azure Chat Client
-    # Using API key for authentication
-    agent = AzureOpenAIChatClient(
-        endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
-        deployment_name=os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"],
-        api_key=os.environ["AZURE_OPENAI_API_KEY"],
-        api_version=os.environ["AZURE_OPENAI_API_VERSION"]
-    ).create_agent(
+    # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
+    # authentication option.
+    agent = AzureOpenAIChatClient(credential=AzureCliCredential()).create_agent(
         instructions="You are a helpful weather agent.",
         tools=get_weather,
     )
@@ -51,13 +48,9 @@ async def streaming_example() -> None:
     print("=== Streaming Response Example ===")
 
     # Create agent with Azure Chat Client
-    # Using API key for authentication
-    agent = AzureOpenAIChatClient(
-        endpoint=os.environ["AZURE_OPENAI_ENDPOINT"],
-        deployment_name=os.environ["AZURE_OPENAI_DEPLOYMENT_NAME"],
-        api_key=os.environ["AZURE_OPENAI_API_KEY"],
-        api_version=os.environ["AZURE_OPENAI_API_VERSION"]
-    ).create_agent(
+    # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
+    # authentication option.
+    agent = AzureOpenAIChatClient(credential=AzureCliCredential()).create_agent(
         instructions="You are a helpful weather agent.",
         tools=get_weather,
     )

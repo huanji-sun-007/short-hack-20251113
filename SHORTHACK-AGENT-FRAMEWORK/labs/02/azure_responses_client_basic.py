@@ -1,7 +1,6 @@
 # Copyright (c) Microsoft. All rights reserved.
 
 import asyncio
-import os
 from random import randint
 from typing import Annotated
 
@@ -15,7 +14,8 @@ Azure OpenAI Responses Client Basic Example
 This sample demonstrates basic usage of AzureOpenAIResponsesClient for structured
 response generation, showing both streaming and non-streaming responses.
 """
-
+from dotenv import load_dotenv
+load_dotenv()
 
 def get_weather(
     location: Annotated[str, Field(description="The location to get the weather for.")],
@@ -31,9 +31,7 @@ async def non_streaming_example() -> None:
 
     # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
     # authentication option.
-    agent = AzureOpenAIResponsesClient(
-        credential=AzureCliCredential(), api_version=os.environ["AZURE_OPENAI_API_VERSION"]
-    ).create_agent(
+    agent = AzureOpenAIResponsesClient(credential=AzureCliCredential()).create_agent(
         instructions="You are a helpful weather agent.",
         tools=get_weather,
     )
@@ -50,9 +48,7 @@ async def streaming_example() -> None:
 
     # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
     # authentication option.
-    agent = AzureOpenAIResponsesClient(
-        credential=AzureCliCredential(), api_version=os.environ["AZURE_OPENAI_API_VERSION"]
-    ).create_agent(
+    agent = AzureOpenAIResponsesClient(credential=AzureCliCredential()).create_agent(
         instructions="You are a helpful weather agent.",
         tools=get_weather,
     )
