@@ -35,6 +35,7 @@ resource openAiDeployment 'Microsoft.CognitiveServices/accounts/deployments@2023
 output openAiEndpoint string = openAiAccount.properties.endpoint
 output openAiDeploymentName string = openAiDeployment.name
 output openAiApiVersion string = openAiApiVersion
+output openAiAccountName string = openAiAccount.name
 
 @secure()
 output openAiKey string = openAiAccount.listKeys().key1
