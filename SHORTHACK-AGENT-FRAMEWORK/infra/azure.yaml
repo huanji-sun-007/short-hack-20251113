@@ -1,6 +1,0 @@
-name: short-hack-agent-framework
-services:
-  app:
-    project: ../
-    language: python
-    host: containerapp
