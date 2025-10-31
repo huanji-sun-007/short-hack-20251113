@@ -7,34 +7,34 @@ This repository is a **hands-on training asset** for teaching developers how to 
 ## Project Structure
 
 ### Training Format
-- **Medium**: Jupyter Notebooks via VS Code extension
+- **Medium**: Python files in lab directories
 - **Duration**: Approximately 3 hours total
-- **Phases**: 4 progressive learning phases (notebooks)
+- **Labs**: Progressive learning labs with executable Python examples
 - **Approach**: Self-paced, hands-on, with exercises
 
-### Learning Phases
+### Learning Labs
 
-Each phase is a separate Jupyter Notebook in `notebooks/`:
+Each lab is contained in a separate directory under `labs/` with Python files and exercises:
 
-1. **Phase 1: Agent Fundamentals** (~45 minutes)
+1. **Lab 01: Agent Fundamentals** (~45 minutes)
    - Creating agents from scratch
    - Basic agent configuration
    - Running simple agent tasks
    - Understanding agent responses
 
-2. **Phase 2: Function Tools** (~45 minutes)
+2. **Lab 02: Function Tools** (~45 minutes)
    - Adding custom function tools to agents
    - Function calling and tool integration
    - Tool parameter handling
    - Error handling in tools
 
-3. **Phase 3: Multi-Agent Orchestration** (~45 minutes)
+3. **Lab 03: Multi-Agent Orchestration** (~45 minutes)
    - Running multiple agents together
    - Agent collaboration patterns
    - Orchestration strategies
    - Agent team workflows
 
-4. **Phase 4: Thread Management** (~45 minutes)
+4. **Lab 04: Thread Management** (~45 minutes)
    - Managing conversation threads
    - State management across interactions
    - Context handling and persistence
@@ -51,18 +51,18 @@ Each phase is a separate Jupyter Notebook in `notebooks/`:
 
 - **Container**: Dev Container with Python 3.11
 - **Framework**: Microsoft Agent Framework (pre-installed)
-- **Interface**: Jupyter Notebooks in VS Code
+- **Interface**: Python files executed via VS Code terminal
 - **Cloud Integration**: Azure OpenAI services support
-- **Additional Tools**: Azure SDK, common data science libraries
+- **Additional Tools**: Azure SDK, common Python libraries
 
 ## When Providing Assistance
 
-### For Notebook Development
-- Create self-contained, progressive lessons
-- Include both explanatory markdown and executable code cells
-- Provide clear, commented code examples
+### For Lab Development
+- Create self-contained, progressive Python lessons
+- Include clear docstrings and inline comments
+- Provide well-structured, executable code examples
 - Add exercises with varying difficulty levels
-- Include expected outputs where helpful
+- Include example outputs in comments or print statements
 
 ### For Code Examples
 - Use Microsoft Agent Framework APIs correctly
@@ -89,9 +89,8 @@ Each phase is a separate Jupyter Notebook in `notebooks/`:
 
 - **Microsoft Agent Framework**: Core framework for building agents
 - **Azure OpenAI**: Language model backend
-- **Jupyter Notebooks**: Interactive learning environment
 - **Python 3.11**: Programming language
-- **VS Code**: IDE with notebook support
+- **VS Code**: IDE with integrated terminal support
 
 ## Success Criteria
 
@@ -104,8 +103,8 @@ Learners completing this workshop should be able to:
 
 ## Important Notes
 
-- Notebooks should be runnable without external dependencies (beyond what's in the container)
-- Each phase builds on previous concepts but can also stand alone
+- Python files should be runnable without external dependencies (beyond what's in the container)
+- Each lab builds on previous concepts but can also stand alone
 - Include both theory and practice in balanced proportions
 - Emphasize hands-on experimentation over passive reading
 - Provide resources for continued learning

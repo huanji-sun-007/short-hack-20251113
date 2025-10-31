@@ -1,6 +1,6 @@
 # Agent Framework Training Workshop
 
-Welcome to the **Microsoft Agent Framework Training Workshop**! This repository provides a hands-on, interactive learning experience using Jupyter Notebooks to master building AI agents with the [Microsoft Agent Framework](https://github.com/microsoft/agent-framework).
+Welcome to the **Microsoft Agent Framework Training Workshop**! This repository provides a hands-on, interactive learning experience using Python lab exercises to master building AI agents with the [Microsoft Agent Framework](https://github.com/microsoft/agent-framework).
 
 ## 🎯 Workshop Overview
 
@@ -8,31 +8,31 @@ This training is designed to take you from zero to building sophisticated multi-
 
 ### What You'll Learn
 
-- **Phase 1**: Agent Fundamentals - Create and run your first agent
-- **Phase 2**: Function Tools - Extend agent capabilities with custom tools
-- **Phase 3**: Multi-Agent Orchestration - Build collaborative agent systems
-- **Phase 4**: Thread Management - Handle conversations and state management
+- **Lab 01**: Agent Fundamentals - Create and run your first agent
+- **Lab 02**: Function Tools - Extend agent capabilities with custom tools
+- **Lab 03**: Multi-Agent Orchestration - Build collaborative agent systems
+- **Lab 04**: Thread Management - Handle conversations and state management
 
 ## 📚 Training Structure
 
-Each phase is contained in a separate Jupyter Notebook in the `notebooks/` directory:
+Each lab is contained in a separate directory under `labs/` with Python files and exercises:
 
 ```
-notebooks/
-├── phase1_agent_fundamentals.ipynb
-├── phase2_function_tools.ipynb
-├── phase3_multi_agent_orchestration.ipynb
-└── phase4_thread_management.ipynb
+labs/
+├── 01/          # Agent Fundamentals
+├── 02/          # Function Tools
+├── 03/          # Multi-Agent Orchestration
+└── 04/          # Thread Management
 ```
 
-### Phase Breakdown
+### Lab Breakdown
 
-| Phase | Topic | Duration | Key Concepts |
-|-------|-------|----------|--------------|
-| 1 | Agent Fundamentals | ~45 min | Creating agents, basic configuration, running simple tasks |
-| 2 | Function Tools | ~45 min | Adding custom tools, function calling, tool integration |
-| 3 | Multi-Agent Orchestration | ~45 min | Agent collaboration, orchestration patterns, agent teams |
-| 4 | Thread Management | ~45 min | Conversation threads, state management, context handling |
+| Lab | Topic | Duration | Key Concepts |
+|-----|-------|----------|--------------|
+| 01 | Agent Fundamentals | ~45 min | Creating agents, basic configuration, running simple tasks |
+| 02 | Function Tools | ~45 min | Adding custom tools, function calling, tool integration |
+| 03 | Multi-Agent Orchestration | ~45 min | Agent collaboration, orchestration patterns, agent teams |
+| 04 | Thread Management | ~45 min | Conversation threads, state management, context handling |
 
 ## 🚀 Getting Started
 
@@ -61,25 +61,33 @@ notebooks/
    - Or use Command Palette (Ctrl+Shift+P / Cmd+Shift+P): `Dev Containers: Reopen in Container`
    - Wait for the container to build (first time may take a few minutes)
 
-4. **Start Learning!**
-   - Navigate to the `notebooks/` folder
-   - Open `phase1_agent_fundamentals.ipynb`
-   - Select the Python kernel when prompted
-   - Follow the instructions in each notebook
+4. **(Optional) Deploy AI Foundry Resources**
+   - If you don't already have access to Azure OpenAI or AI connection details, run:
+   ```bash
+   ./deploy.sh
+   ```
+   - This will deploy AI Foundry resources and configure environment variables automatically
+   - Skip this step if you already have AI connection details and prefer to configure them manually
+
+5. **Start Learning!**
+   - Navigate to the `labs/01/` folder
+   - Run the Python files using `python labs/01/<filename>.py`
+   - Follow the instructions and comments in each Python file
+   - Progress through labs 01 → 02 → 03 → 04
 
 ## 📖 Workshop Flow
 
 ### Recommended Approach
 
-1. **Sequential Learning**: Complete notebooks in order (Phase 1 → 2 → 3 → 4)
-2. **Hands-On Practice**: Run all code cells and experiment with modifications
-3. **Challenge Exercises**: Each phase includes practice exercises
+1. **Sequential Learning**: Complete labs in order (Lab 01 → 02 → 03 → 04)
+2. **Hands-On Practice**: Run all Python files and experiment with modifications
+3. **Challenge Exercises**: Each lab includes practice exercises
 4. **Build Projects**: Apply learned concepts to create your own agents
 
 ### Self-Paced Learning
 
-- Each notebook is self-contained with explanations and examples
-- Code cells are ready to run with clear outputs
+- Each lab is self-contained with explanations and examples
+- Python files are ready to run with clear outputs and comments
 - Exercises range from guided to open-ended
 - Solutions and best practices are provided
 
@@ -89,9 +97,9 @@ This project uses a pre-configured Dev Container with:
 
 - **Python 3.11**
 - **Microsoft Agent Framework** pre-installed
-- **Jupyter Notebooks** fully integrated with VS Code
+- **VS Code** with integrated terminal support
 - **Azure SDK** for cloud services integration
-- **Common Python libraries** (numpy, pandas, matplotlib, etc.)
+- **Common Python libraries** for development
 
 See [.devcontainer/README.md](.devcontainer/README.md) for detailed environment information.
 
@@ -132,16 +140,16 @@ This training material is designed to be improved over time. Contributions are w
 
 ### For Instructors
 
-- Each phase can be taught as a standalone session
-- Live coding demonstrations work well with these notebooks
+- Each lab can be taught as a standalone session
+- Live coding demonstrations work well with these Python files
 - Encourage participants to experiment beyond the exercises
 - Use the challenge exercises for group discussions
 
 ### For Learners
 
-- Don't just run cells—read and understand the code
+- Don't just run code—read and understand the implementation
 - Experiment by modifying parameters and approaches
-- Complete all exercises before moving to the next phase
+- Complete all exercises before moving to the next lab
 - Join community forums to discuss and share learnings
 
 ## 🐛 Troubleshooting
@@ -153,9 +161,10 @@ This training material is designed to be improved over time. Contributions are w
 - Check Docker has sufficient resources (4GB+ RAM recommended)
 - Try rebuilding: `Dev Containers: Rebuild Container`
 
-**Kernel not found**
-- Select the Python 3.11 kernel from the kernel picker
-- Restart VS Code if the kernel doesn't appear
+**Python execution issues**
+- Ensure you're in the correct directory when running Python files
+- Use `python labs/01/<filename>.py` to run lab files
+- Check that the Python environment is properly configured
 
 **Agent Framework import errors**
 - Verify container is fully built
@@ -177,4 +186,4 @@ Built with the [Microsoft Agent Framework](https://github.com/microsoft/agent-fr
 
 ---
 
-**Ready to build amazing AI agents?** Open `notebooks/phase1_agent_fundamentals.ipynb` and let's get started! 🚀
+**Ready to build amazing AI agents?** Navigate to `labs/01/` and run your first Python file to get started! 🚀
