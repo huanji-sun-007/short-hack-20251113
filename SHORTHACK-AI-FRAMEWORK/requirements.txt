@@ -1,5 +1,0 @@
-semantic-kernel
-python-dotenv
-azure-search-documents
-azure-identity
-PyPDF2
