@@ -18,6 +18,9 @@ module foundry 'modules/foundry.bicep' = {
 
 output AZURE_OPENAI_ENDPOINT string = foundry.outputs.openAiEndpoint
 output AZURE_OPENAI_DEPLOYMENT_NAME string = foundry.outputs.openAiDeploymentName
+output AZURE_OPENAI_CHAT_DEPLOYMENT_NAME string = foundry.outputs.openAiDeploymentName
+output AZURE_OPENAI_RESPONSES_DEPLOYMENT_NAME string = foundry.outputs.openAiDeploymentName
+output AZURE_OPENAI_API_VERSION string = foundry.outputs.openAiApiVersion
 
 @secure()
 output AZURE_OPENAI_API_KEY string = foundry.outputs.openAiKey
