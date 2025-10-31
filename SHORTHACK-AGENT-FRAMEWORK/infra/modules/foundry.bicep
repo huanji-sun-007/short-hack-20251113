@@ -4,10 +4,10 @@ param openAiDeploymentName string = 'gpt-4o'
 param openAiModelVersion string = '2024-11-20'
 param openAiApiVersion string = '2025-03-01-preview'
 
-resource openAiAccount 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
+resource openAiAccount 'Microsoft.CognitiveServices/accounts@2025-04-01-preview' = {
   name: openAiAccountName
   location: location
-  kind: 'OpenAI'
+  kind: 'AIServices'
   sku: {
     name: 'S0'
   }
@@ -17,7 +17,7 @@ resource openAiAccount 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   }
 }
 
-resource openAiDeployment 'Microsoft.CognitiveServices/accounts/deployments@2023-05-01' = {
+resource openAiDeployment 'Microsoft.CognitiveServices/accounts/deployments@2025-04-01-preview' = {
   parent: openAiAccount
   name: openAiDeploymentName
   properties: {
