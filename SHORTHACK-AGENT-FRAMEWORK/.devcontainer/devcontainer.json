@@ -34,7 +34,7 @@
 		}
 	},
 
-	"postCreateCommand": "bash .devcontainer/setup.sh",
+	"postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 
 	"remoteUser": "vscode",
 	
@@ -43,7 +43,5 @@
 		"source=${localEnv:HOME}${localEnv:USERPROFILE}/.gitconfig,target=/home/vscode/.gitconfig,type=bind,consistency=cached"
 	],
 
-	"forwardPorts": [8888, 8000],
-	
 	"runArgs": ["--init"]
 }
