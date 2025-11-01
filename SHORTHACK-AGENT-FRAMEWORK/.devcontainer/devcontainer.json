@@ -34,7 +34,7 @@
 		}
 	},
 
-	"postCreateCommand": "pip install --upgrade pip && pip install -r .devcontainer/requirements.txt",
+	"postCreateCommand": "bash .devcontainer/setup.sh",
 
 	"remoteUser": "vscode",
 	
