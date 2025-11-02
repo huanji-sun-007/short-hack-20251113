@@ -5,7 +5,7 @@ set -e
 
 echo "🐍 Installing Python dependencies..."
 pip install --upgrade pip
-pip install -r .devcontainer/requirements.txt
+pip install -r requirements.txt
 
 echo "🔧 Configuring Git for consistent line endings..."
 git config --global core.autocrlf input

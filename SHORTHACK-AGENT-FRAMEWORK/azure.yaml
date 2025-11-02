@@ -4,7 +4,7 @@ metadata:
 
 # Configure default location and resource group
 resourceGroup: ${AZURE_ENV_NAME}-rg
-location: japaneast
+location: eastus2
 
 infra:
   provider: bicep
