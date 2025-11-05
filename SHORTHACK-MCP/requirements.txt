@@ -1,2 +1,2 @@
 semantic-kernel[mcp]
-mcp>=1.14.0
+mcp>=1.20.0

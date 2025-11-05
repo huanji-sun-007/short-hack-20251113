@@ -1,16 +1,27 @@
 # 🧪 Lab 3: Creating an MCP Server with Fast MCP
 
-In this lab, you'll create a **Model Context Protocol (MCP)** server using **Fast MCP**. This server exposes a chat-based agent that can answer questions about restaurant menus, including:
+In this lab, you'll create a **Model Context Protocol (MCP)** server using **[FastMCP](https://gofastmcp.com/getting-started/welcome)**. This server exposes tools to access Codebeamer through the Codebeamer APIs, including:
 
-- 🏢 Listing available restaurants
-- 🥗 Recommending daily specials
-- 💰 Checking prices for menu items
+- List projects
+- List trackers in a projects
+- List tracker items in a projects
+- List comments in a tracker item
+- Post comment on a tracker item
+  ...
 
 ---
 
 ## 📁 Source Code
 
 The full reference code for this lab is located at:
+
+Codebeamer API calls
+
+```
+/servers/codebeamer_interface.py
+```
+
+Define MCP tools
 
 ```
 /servers/mcp_server.py
@@ -26,24 +37,17 @@ Define a mcp tool by using @mcp.tool() annotation. Make sure degine the args and
 
 ```python
 @mcp.tool()
-def mcp_return_sum(a: int, b: int) -> int:
+async def mcp_get_projects() -> Dict[str, Any]:
     """
+    Get projects from Codebeamer using the /v3/projects API endpoint.
 
-    Returns the sum of two integers.
-    Args:
-        a: The first integer to add.
-        b: The second integer to add.
     Returns:
-        The sum of a and b.
+        Dictionary containing the API response with projects list or error information
     """
-    return a + b
+    return await get_projects()
 ```
 
-This lets the server work either through standard input/output (for tools like GitHub Copilot Chat) or over HTTP (for browser-based testing).
-
 ### 2 MCP Server Setup
-
-The agent is exposed as an MCP server using:
 
 ```python
 mcp = FastMCP("server", stateless_http=True, port=8080, host="0.0.0.0")
@@ -54,6 +58,8 @@ Depending on the selected transport:
 
 - If --transport stdio: it uses mcp.server.stdio to integrate with tools like GitHub Copilot Chat.
 - If --transport streamable-http: it uses uvicorn and starlette to expose an HTTP endpoint (at /sse) for browser or local network interaction.
+
+Run the MCP server:
 
 ```bash
 python3 servers/mcp_server.py
@@ -82,7 +88,12 @@ You can run this server as a plugin inside GitHub Copilot Chat (Agent Mode).
 
 3. ✅ Ensure GitHub Copilot Chat is in Agent Mode.
 4. Ask Copilot questions like:
-   - “What's the result of 100+300?”
+   - Help me retrieve all projects.
+   - Get the trackers for this project.
+   - Get items from trcker ID: xxxx.
+   - Get comments of item ID: 5881865.
+   - Post a new commenton item ID: 5881865.
+     ...
 
 ## 🔁 Try to build your own tools!
 
