@@ -45,29 +45,53 @@ This workshop includes a progressive series of Jupyter notebooks designed to tak
 
 ### **Documentation**
 
+- **[Setup with DevContainer](docs/setup-with-devcontainer.md)** - Automated setup using Docker containers (recommended)
+- **[Setup without DevContainer](docs/setup-without-devcontainer.md)** - Local setup guide for manual configuration
 - **[Azure AI Foundry Introduction](docs/azure-ai-foundry-introduction.md)** - Comprehensive overview of Azure AI Foundry features and capabilities
-- **[Dev Container Setup](docs/devcontainer-setup.md)** - Development environment configuration guide
+- **[Dev Container Setup](docs/devcontainer-setup.md)** - Additional DevContainer documentation and troubleshooting
 
 ## 🚀 Getting Started
 
+### Choose Your Setup Method
+
+This workshop supports two setup approaches. Choose the one that best fits your needs:
+
+#### **Option 1: DevContainer Setup** (Recommended)
+- ✅ **Fully automated** - Everything pre-configured and ready to use
+- ✅ **Consistent environment** - Works the same on any OS
+- ✅ **Zero conflicts** - Isolated from your local machine
+- ⚠️ **Requires**: Docker Desktop (2-3 GB download)
+
+👉 **[Follow the DevContainer Setup Guide](docs/setup-with-devcontainer.md)**
+
+#### **Option 2: Local Setup** (More Control)
+- ✅ **Direct control** - Full access to your local environment
+- ✅ **Lighter weight** - No Docker required
+- ✅ **Familiar tools** - Use your existing Python installation
+- ⚠️ **Requires**: Manual configuration of Python and dependencies
+
+👉 **[Follow the Local Setup Guide](docs/setup-without-devcontainer.md)**
+
 ### Prerequisites
 
+**For All Users:**
 - **Azure Subscription** - [Create a free account](https://azure.microsoft.com/free/)
 - **Visual Studio Code** - [Download VS Code](https://code.visualstudio.com/)
-- **Python Extension** for VS Code
-- **Jupyter Extension** for VS Code (optional but recommended)
+- **Azure AI Foundry Project** - Set up through [Azure AI Foundry Portal](https://ai.azure.com)
 
-### Quick Start
+**For DevContainer Setup:**
+- Docker Desktop installed and running
+- Dev Containers extension for VS Code
 
-1. **Open the workspace** in VS Code
-2. **Install dependencies**:
+**For Local Setup:**
+- Python 3.11 or later
+- Python and Jupyter extensions for VS Code
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+### Quick Start After Setup
 
-3. **Start with the first notebook**: Open `notebooks/1-authentication.ipynb`
-4. **Follow the notebooks in order** for the best learning experience
+1. **Configure Azure credentials** in `.env` file
+2. **Start with the first notebook**: Open `notebooks/1-authentication.ipynb`
+3. **Follow the notebooks in order** for the best learning experience
 
 ## 🛠️ What's Included
 
