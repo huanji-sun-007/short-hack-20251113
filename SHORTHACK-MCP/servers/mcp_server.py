@@ -59,7 +59,7 @@ async def mcp_get_tracker_items(tracker_id: int) -> Dict[str, Any]:
     Get tracker items within a tracker from Codebeamer using the /v3/trackers/{trackerId}/items API endpoint.
 
     Args:
-        tracker_id: The ID of the tracker to retrieve
+        tracker_id: The ID of the tracker to retrieve items for
 
     Reads credentials from environment variables:
     - CODEBEAMER_BASE_URL: The base URL of the Codebeamer instance
@@ -75,10 +75,10 @@ async def mcp_get_tracker_items(tracker_id: int) -> Dict[str, Any]:
 @mcp.tool()
 async def mcp_get_tracker_item(item_id: int) -> Dict[str, Any]:
     """
-    Get a specific tracker from Codebeamer using the /v3/trackers/{trackerId} API endpoint.
+    Get a specific tracker item from Codebeamer using the /v3/items/{itemId} API endpoint.
 
     Args:
-        tracker_id: The ID of the tracker to retrieve
+        item_id: The ID of the tracker item to retrieve
 
     Reads credentials from environment variables:
     - CODEBEAMER_BASE_URL: The base URL of the Codebeamer instance

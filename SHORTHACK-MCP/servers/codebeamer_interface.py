@@ -119,10 +119,10 @@ async def get_trackers_by_project_id(project_id: int) -> Dict[str, Any]:
 
 async def get_tracker_items(tracker_id: int) -> Dict[str, Any]:
     """
-    Get a tracker items within a tracker from Codebeamer using the /v3/trackers/{trackerId}/items API endpoint.
+    Get tracker items within a tracker from Codebeamer using the /v3/trackers/{trackerId}/items API endpoint.
 
     Args:
-        tracker_id: The ID of the tracker to retrieve
+        tracker_id: The ID of the tracker to retrieve items for
 
     Returns:
         Dictionary containing the tracker information or error information

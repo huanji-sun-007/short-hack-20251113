@@ -53,7 +53,7 @@ Before you begin, ensure you have:
 └── README.md              # This file
 ```
 
-## �🚀 Quick Start
+## 🚀 Quick Start
 
 1. Open the project in VS Code and reopen in the Dev Container
 2. Install the Wikipedia MCP server: `pip install wikipedia-mcp`
