@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# MCP Lab - DevContainer Post-Create Script
+echo "🚀 Setting up MCP Lab environment..."
+
+# Update system packages
+echo "📦 Updating system packages..."
+sudo apt-get update && sudo apt-get upgrade -y
+
+# Install additional system dependencies
+echo "🔧 Installing system dependencies..."
+sudo apt-get install -y \
+    build-essential \
+    curl \
+    wget \
+    git \
+    vim \
+    nano \
+    jq \
+    tree \
+    htop \
+    unzip \
+    software-properties-common
+
+# Upgrade pip and install wheel
+echo "🐍 Upgrading pip and setuptools..."
+python -m pip install --upgrade pip setuptools wheel
+
+# Install Python dependencies
+echo "📚 Installing Python packages for MCP Lab..."
+pip install -r requirements.txt
+echo "✅ Installed packages from requirements.txt"
