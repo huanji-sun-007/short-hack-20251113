@@ -35,18 +35,3 @@ echo "✅ Installed packages from requirements.txt"
 echo "☁️  Installing Azure CLI extensions..."
 az extension add --name ml --yes 2>/dev/null || echo "Azure ML extension already installed"
 az extension add --name ai-examples --yes 2>/dev/null || echo "AI Examples extension installation skipped"
-
-
-# Print completion message
-echo ""
-echo "✅ Azure AI Foundry Workshop DevContainer setup completed!"
-echo ""
-echo "🎯 Next Steps:"
-echo "  Run 'bash deploy/deploy.sh' to deploy the workshop resources."
-echo ""
-echo "📚 Workshop Materials:"
-echo "  - Documentation: docs/"
-echo "  - Sample Notebooks: notebooks/" 
-echo ""
-echo "🚀 Happy learning with Azure AI Foundry!"
-echo ""
