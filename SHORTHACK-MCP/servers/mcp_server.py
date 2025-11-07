@@ -2,9 +2,7 @@ import logging
 import sys
 from typing import Any, Dict
 
-from mcp.server.fastmcp import FastMCP
-
-from servers.codebeamer_interface import (
+from codebeamer_interface import (
     get_projects,
     get_tracker_item,
     get_tracker_item_comments,
@@ -12,6 +10,7 @@ from servers.codebeamer_interface import (
     get_trackers_by_project_id,
     post_tracker_item_comment,
 )
+from mcp.server.fastmcp import FastMCP
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"

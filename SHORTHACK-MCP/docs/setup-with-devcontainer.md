@@ -1,6 +1,6 @@
 # Setup with DevContainer
 
-This guide will help you set up the Azure AI Foundry Workshop environment using a DevContainer, which provides a consistent, pre-configured development environment with all tools and dependencies.
+This guide will help you set up the Model Context Protocol (MCP) Lab environment using a DevContainer, which provides a consistent, pre-configured development environment with all tools and dependencies.
 
 ## 📋 Prerequisites
 
@@ -20,6 +20,7 @@ This guide will help you set up the Azure AI Foundry Workshop environment using 
    - **macOS**: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
    - **Linux**: [Docker Engine](https://docs.docker.com/engine/install/) or Docker Desktop
    - Ensure Docker is running before proceeding
+
 4. **Git**
    - Usually included with VS Code
    - Or download from [git-scm.com](https://git-scm.com/)
@@ -34,6 +35,12 @@ This guide will help you set up the Azure AI Foundry Workshop environment using 
 - **Storage**: At least 10GB free space for container images and dependencies
 - **Internet**: Stable connection for downloading container images and dependencies
 
+### Azure & Codebeamer Requirements
+
+- **Azure Subscription** with an Azure OpenAI resource
+  - Deployed Chat Completion Model (e.g., `gpt-4o`, `gpt-4o-mini`)
+- **Codebeamer Instance** with valid API credentials (for Labs 2 and 3)
+
 ## 🚀 Step-by-Step Setup
 
 ### Step 1: Clone the Repository
@@ -42,7 +49,7 @@ Open your terminal and run:
 
 ```bash
 git clone https://github.com/huanji-sun-007/short-hack-20251113.git
-cd cd short-hack-20251113/SHORTHACK-AI-FOUNDRY
+cd short-hack-20251113/SHORTHACK-MCP
 ```
 
 ### Step 2: Open in Visual Studio Code
@@ -54,7 +61,7 @@ code .
 Alternatively, you can:
 - Open VS Code
 - Go to `File` → `Open Folder`
-- Navigate to the cloned repository folder
+- Navigate to the `SHORTHACK-MCP` folder
 
 ### Step 3: Open in DevContainer
 
@@ -77,36 +84,41 @@ The first time you open the DevContainer, it will:
 1. **Pull the base Docker image** (~2-3 GB)
    - Python 3.11 with Debian Bullseye
    
-2. **Install features**:
-   - Azure CLI
+2. **Install system dependencies**:
    - Git
-   - GitHub CLI
-   - Node.js 18
+   - curl
+   - ca-certificates
+   
+3. **Install Azure CLI**
+   - Latest version via official installation script
 
-3. **Install VS Code extensions**:
+4. **Install UV package manager**
+   - Modern Python package installer
+
+5. **Install VS Code extensions**:
    - Python, Pylance, Jupyter
-   - Azure Account and Resource Groups
-   - Markdown and YAML tools
-   - Code formatters (Black, isort, flake8)
+   - Black formatter, Ruff linter
+   - Prettier for Markdown, JSON, YAML
 
-4. **Run post-create scripts**:
+6. **Run post-create scripts**:
+   - Install `ipykernel`, `black`, `ruff`
    - Install Python dependencies from `requirements.txt`
-   - Configure environment
+   - Verify UV installation
 
 **Expected time**: 5-15 minutes (depending on your internet connection)
 
 You can monitor progress in the VS Code terminal window at the bottom of the screen.
 
-### Step 5: Configure Azure Credentials
+### Step 5: Configure Environment Variables
 
 Once the container is ready, create your environment configuration file:
 
 1. **Copy the template file**:
    ```bash
-   cp .env.template .env
+   cp .envtemplate .env
    ```
 
-2. **Edit the `.env` file** with your Azure details:
+2. **Edit the `.env` file** with your credentials:
    ```bash
    # Open in VS Code editor
    code .env
@@ -114,42 +126,44 @@ Once the container is ready, create your environment configuration file:
 
 3. **Fill in the required values**:
    ```bash
-   # Azure Subscription and Tenant Information
-   SUBSCRIPTION_ID="your-subscription-id"
-   TENANT_ID="your-tenant-id"
-   
-   # Azure AI Foundry Project Configuration
-   AIPROJECT_ENDPOINT="your-ai-project-endpoint"
-   
    # Azure OpenAI Configuration
-   MODEL_DEPLOYMENT_NAME="gpt-4o"
+   AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
+   AZURE_OPENAI_API_KEY=your-api-key
+   AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o
+   AZURE_OPENAI_API_VERSION=2025-03-01-preview
+   
+   # Codebeamer Configuration (for Labs 2 and 3)
+   CODEBEAMER_URL=https://your-codebeamer-instance.com
+   CODEBEAMER_API_KEY=your-codebeamer-api-key
    ```
 
 ### Step 6: Verify Installation
 
 1. **Check Python version**:
    ```bash
-   python3.11 --version
+   python3 --version
    ```
    Expected output: `Python 3.11.x`
 
 2. **Check installed packages**:
    ```bash
-   pip list | grep azure
+   pip list | grep semantic-kernel
+   pip list | grep mcp
    ```
-   You should see Azure AI packages listed
+   You should see `semantic-kernel` and `mcp` packages listed
 
 3. **Check Azure CLI**:
    ```bash
    az --version
    ```
 
-### Step 7: Start the Workshop
 
-1. **Open the notebooks folder** in VS Code Explorer
-2. **Start with the first notebook**: `notebooks/1-authentication.ipynb`
-3. **Select the Python kernel** when prompted (should be `/usr/local/bin/python`)
-4. **Run the cells** to authenticate and verify your setup
+### Step 7: Start the Labs
+
+1. **Open the labs folder** in VS Code Explorer
+2. **Start with the first lab**: `labs/01_connecting_to_an_mcp_server.md`
+3. Follow the instructions to configure MCP with GitHub Copilot Chat
+4. Continue with Lab 2 and Lab 3
 
 ## 🔧 DevContainer Features
 
@@ -158,35 +172,48 @@ Your DevContainer comes pre-configured with:
 ### Development Tools
 - ✅ Python 3.11
 - ✅ Azure CLI
-- ✅ Git & GitHub CLI
-- ✅ Node.js 18
+- ✅ Git
+- ✅ UV package manager
+- ✅ curl & ca-certificates
 
 ### VS Code Extensions
 - ✅ Python language support (Pylance)
 - ✅ Jupyter notebooks
-- ✅ Azure Account integration
-- ✅ Code formatting (Black, isort, flake8)
-- ✅ Markdown support
+- ✅ Black formatter
+- ✅ Ruff linter
+- ✅ Prettier (Markdown, JSON, YAML)
 
 ### Python Packages
-- ✅ Azure AI Foundry SDK
-- ✅ Azure Identity & Authentication
-- ✅ Jupyter & JupyterLab
-- ✅ Development tools (Black, isort, flake8)
+- ✅ Semantic Kernel with MCP support
+- ✅ MCP SDK (v1.20.0+)
+- ✅ Jupyter & ipykernel
+- ✅ Development tools (Black, Ruff)
 
-### Port Forwarding
-- ✅ Port 8888 (Jupyter)
-- ✅ Port 5000 (Flask Dev Server)
-- ✅ Port 8000 (HTTP Server)
+### Configuration
+- ✅ Working directory: `/workspace`
+- ✅ Remote user: `vscode`
+- ✅ PYTHONPATH: `/workspace`
+- ✅ Format on save enabled
 
 ## 🛠️ Common Tasks
 
 ### Rebuilding the Container
 
-If you need to rebuild the container (e.g., after updating `devcontainer.json`):
+If you need to rebuild the container (e.g., after updating `devcontainer.json` or `Dockerfile`):
 
 1. Press `Ctrl+Shift+P` / `Cmd+Shift+P`
 2. Select: **"Dev Containers: Rebuild Container"**
+
+### Installing Additional Python Packages
+
+```bash
+pip install package-name
+```
+
+Or using UV for faster installation:
+```bash
+uv pip install package-name
+```
 
 ### Stopping the Container
 
@@ -195,6 +222,20 @@ If you need to rebuild the container (e.g., after updating `devcontainer.json`):
 
 Or simply close VS Code.
 
+### Running MCP Server
+
+To run the custom Codebeamer MCP server:
+
+```bash
+python servers/mcp_server.py
+```
+
+### Running Jupyter Notebooks
+
+1. Open a notebook file (`.ipynb`)
+2. Select the Python kernel when prompted
+3. Run cells using `Shift+Enter`
+
 ## ❓ Troubleshooting
 
 ### Container fails to start
@@ -202,11 +243,16 @@ Or simply close VS Code.
 **Issue**: Docker is not running
 - **Solution**: Start Docker Desktop and wait for it to fully initialize
 
+**Issue**: Port conflicts
+- **Solution**: Stop other containers or services using the same ports
+
 ### Slow performance
 
 **Issue**: Container is slow on Windows
-- **Solution**: Ensure you're using WSL2 backend in Docker Desktop settings
-- Store repository files in WSL2 filesystem (not Windows filesystem)
+- **Solution**: 
+  - Ensure you're using WSL2 backend in Docker Desktop settings
+  - Store repository files in WSL2 filesystem (not Windows filesystem)
+  - Open VS Code from WSL: `\\wsl$\Ubuntu\home\user\...`
 
 **Issue**: High memory usage
 - **Solution**: Increase Docker memory limit in Docker Desktop settings (Preferences → Resources)
@@ -217,21 +263,39 @@ Or simply close VS Code.
 - **Solution**: Rebuild the container:
   - `Ctrl+Shift+P` / `Cmd+Shift+P` → "Dev Containers: Rebuild Container"
 
+### Python packages not found
+
+**Issue**: `ModuleNotFoundError` when importing packages
+- **Solution**: 
+  1. Ensure you're in the container (check bottom-left corner of VS Code)
+  2. Reinstall requirements: `pip install -r requirements.txt`
+  3. Reload VS Code window: `Ctrl+Shift+P` → "Developer: Reload Window"
+
+### MCP Server connection issues
+
+**Issue**: GitHub Copilot Chat can't connect to MCP server
+- **Solution**: 
+  1. Verify `.vscode/mcp.json` configuration is correct
+  2. Ensure MCP server is running
+  3. Check environment variables in `.env`
+  4. Restart VS Code
+
 ## 📚 Next Steps
 
 Once your environment is set up:
 
-1. ✅ Verify authentication: Open `notebooks/1-authentication.ipynb`
-2. ✅ Configure environment: Open `notebooks/2-environment_setup.ipynb`
-3. ✅ Build your first AI app: Open `notebooks/3-quick-start.ipynb`
-4. ✅ Explore AI agents: Continue with notebooks 4 and 5
+1. ✅ Complete Lab 1: Integrate Wikipedia MCP Server with Copilot Chat
+2. ✅ Complete Lab 2: Build your own MCP server with FastMCP
+3. ✅ Complete Lab 3: Use MCP as a plugin in Semantic Kernel
 
 ## 🔗 Additional Resources
 
 - [DevContainer Documentation](https://code.visualstudio.com/docs/devcontainers/containers)
-- [Azure AI Foundry Documentation](https://learn.microsoft.com/azure/ai-studio/)
+- [Model Context Protocol Documentation](https://modelcontextprotocol.io/introduction)
+- [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/)
+- [FastMCP Documentation](https://gofastmcp.com/getting-started/welcome)
 - [Docker Documentation](https://docs.docker.com/)
 
 ---
 
-**Ready to start?** Open `notebooks/1-authentication.ipynb` and begin your AI journey! 🚀
+**Ready to start?** Open `labs/01_connecting_to_an_mcp_server.md` and begin your MCP journey! 🚀

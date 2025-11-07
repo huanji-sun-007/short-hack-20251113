@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Azure AI Foundry Workshop - DevContainer Post-Create Script
-echo "🚀 Setting up Azure AI Foundry Workshop environment..."
+# MCP Lab - DevContainer Post-Create Script
+echo "🚀 Setting up MCP Lab environment..."
 
 # Update system packages
 echo "📦 Updating system packages..."
@@ -27,6 +27,6 @@ echo "🐍 Upgrading pip and setuptools..."
 python -m pip install --upgrade pip setuptools wheel
 
 # Install Python dependencies
-echo "📚 Installing Python packages for Azure AI Foundry Workshop..."
+echo "📚 Installing Python packages for MCP Lab..."
 pip install -r requirements.txt
 echo "✅ Installed packages from requirements.txt"

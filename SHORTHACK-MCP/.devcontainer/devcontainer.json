@@ -1,18 +1,13 @@
 {
   "name": "MCP Lab Dev Container",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "context": "../.."
-  },
+  "image": "mcr.microsoft.com/devcontainers/python:3.11-bullseye",
+  
   "features": {
-    "ghcr.io/devcontainers/features/docker-in-docker:2": {
-      "moby": false
-    },
-    "ghcr.io/devcontainers/features/azure-cli:1": {
-      "version": "latest"
-    }
+    "ghcr.io/devcontainers/features/azure-cli:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/devcontainers/features/git:1": {}
   },
-  "postCreateCommand": "pip install ipykernel black ruff && pip install -r requirements.txt && uv --version || true",
+
   "customizations": {
     "vscode": {
       "extensions": [
@@ -21,40 +16,34 @@
         "ms-toolsai.jupyter",
         "ms-python.black-formatter",
         "charliermarsh.ruff",
-        "esbenp.prettier-vscode"
+        "esbenp.prettier-vscode",
+        "yzhang.markdown-all-in-one"
       ],
       "settings": {
         "python.defaultInterpreterPath": "/usr/local/bin/python",
         "python.formatting.provider": "black",
-        "python.formatting.blackArgs": ["--line-length", "120"],
+        "python.formatting.blackArgs": ["--line-length=120"],
         "python.linting.enabled": true,
         "python.linting.ruffEnabled": true,
         "python.linting.ruffArgs": [
-          "--line-length",
-          "120",
-          "--extend-select",
-          "I"
+          "--line-length=120",
+          "--extend-select=I"
         ],
         "[python]": {
           "editor.defaultFormatter": "ms-python.black-formatter"
         },
-        "[markdown]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[yaml]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "[json]": {
-          "editor.defaultFormatter": "esbenp.prettier-vscode"
-        },
-        "editor.formatOnSave": true
+        "editor.formatOnSave": true,
+        "jupyter.askForKernelRestart": false,
+        "files.associations": {
+          "*.ipynb": "jupyter-notebook"
+        }
       }
     }
   },
-  "workspaceFolder": "/workspace",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached",
+
+  "postCreateCommand": "bash .devcontainer/post-create.sh",
+  "postStartCommand": "echo 'MCP Lab DevContainer is ready!' && python --version && pip --version",
+  
   "remoteUser": "vscode",
-  "remoteEnv": {
-    "PYTHONPATH": "/workspace"
-  }
+  "updateContentCommand": "pip install -r requirements.txt"
 }

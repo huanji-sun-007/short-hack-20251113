@@ -3,12 +3,12 @@
 # ====================================
 AZURE_OPENAI_ENDPOINT = ""
 AZURE_OPENAI_KEY = ""
-MODEL_DEPLOYMENT_NAME = "gpt-5-mini"
-MODEL_DEPLOYMENT_API_VERSION = "2025-04-01-preview"
+MODEL_DEPLOYMENT_NAME = "gpt-4o"
+MODEL_DEPLOYMENT_API_VERSION = "2025-03-01-preview"
 
 # ====================================
 # Codebeamer Configuration
 # ====================================
-CODEBEAMER_BASE_URL = "https://trial.codebeamer.com/api"
+CODEBEAMER_BASE_URL = ""
 CODEBEAMER_USERNAME = ""
 CODEBEAMER_PASSWORD = ""
