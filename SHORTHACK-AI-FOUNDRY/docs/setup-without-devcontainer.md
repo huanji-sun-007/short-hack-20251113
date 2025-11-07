@@ -39,12 +39,6 @@ This guide will help you set up the Azure AI Foundry Workshop environment on you
 - **Storage**: At least 2GB free space for dependencies
 - **Internet**: Stable connection for package downloads
 
-### Azure Requirements
-
-- **Azure Subscription** - [Create a free account](https://azure.microsoft.com/free/)
-- **Azure AI Foundry Project** - Created through [Azure AI Foundry Portal](https://ai.azure.com)
-- **Azure OpenAI Deployment** - GPT-4o model deployment
-
 ## 🚀 Step-by-Step Setup
 
 ### Step 1: Clone the Repository
@@ -52,7 +46,7 @@ This guide will help you set up the Azure AI Foundry Workshop environment on you
 Open your terminal and run:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/huanji-sun-007/short-hack-20251113.git
 cd SHORTHACK-AI-FOUNDRY
 ```
 
@@ -60,35 +54,35 @@ cd SHORTHACK-AI-FOUNDRY
 
 Check that Python 3.11 or later is installed:
 
+**Windows:**
+```powershell
+python3.11 --version
+# or use Python Launcher:
+py -3.11 --version
+```
+
+**macOS/Linux:**
 ```bash
-python --version
-# or on some systems:
-python3 --version
+python3.11 --version
 ```
 
 Expected output: `Python 3.11.x` or higher
 
-**Note**: If you have multiple Python versions installed, you may need to use `python3.11` instead of `python` throughout this guide.
+**Note**: This guide uses `python3.11` throughout all commands to ensure Python 3.11 is used. This avoids conflicts if you have multiple Python versions installed.
 
 ### Step 3: Create a Virtual Environment
 
 Creating a virtual environment isolates your project dependencies:
 
-**Windows (PowerShell):**
+**Windows:**
 ```powershell
-python -m venv venv
+python3.11 -m venv venv
 .\venv\Scripts\Activate.ps1
-```
-
-**Windows (Command Prompt):**
-```cmd
-python -m venv venv
-venv\Scripts\activate.bat
 ```
 
 **macOS/Linux:**
 ```bash
-python3 -m venv venv
+python3.11 -m venv venv
 source venv/bin/activate
 ```
 
@@ -200,18 +194,12 @@ Create your environment configuration file:
    MODEL_DEPLOYMENT_NAME="gpt-4o"
    ```
 
-**Where to find these values:**
-- Go to [Azure AI Foundry Portal](https://ai.azure.com)
-- Select your project
-- Navigate to **Settings** → **Project properties**
-- Copy the Subscription ID, Tenant ID, and Project Connection String
-
 ### Step 9: Verify Installation
 
 1. **Check virtual environment is active**:
    ```bash
-   which python  # macOS/Linux
-   where python  # Windows
+   which python3.11  # macOS/Linux
+   where python3.11  # Windows
    ```
    Should point to your `venv` directory
 
@@ -231,11 +219,6 @@ Create your environment configuration file:
 3. **Test Jupyter installation**:
    ```bash
    jupyter --version
-   ```
-
-4. **Optional - Verify Azure CLI** (if installed):
-   ```bash
-   az --version
    ```
 
 ### Step 10: Start the Workshop
@@ -377,14 +360,10 @@ flake8 .
 
 ### Python command not found
 
-**Issue**: `python: command not found`
-- **Windows**: Reinstall Python and check "Add Python to PATH"
-- **macOS/Linux**: Try `python3` instead of `python`, or add alias:
-  ```bash
-  echo "alias python=python3" >> ~/.zshrc  # macOS with zsh
-  echo "alias python=python3" >> ~/.bashrc  # Linux with bash
-  source ~/.zshrc  # or ~/.bashrc
-  ```
+**Issue**: `python3.11: command not found`
+- **Windows**: Reinstall Python 3.11 and check "Add Python to PATH"
+- **macOS**: Install Python 3.11 with `brew install python@3.11` and ensure it's in your PATH
+- **Linux**: Install Python 3.11 with `sudo apt install python3.11`
 
 ### Virtual environment not activating
 
@@ -396,10 +375,17 @@ flake8 .
 
 **Issue**: Virtual environment not found
 - **Solution**: Recreate the virtual environment:
+  
+  **Windows:**
+  ```powershell
+  Remove-Item -Recurse -Force venv
+  python3.11 -m venv venv
+  ```
+  
+  **macOS/Linux:**
   ```bash
-  rm -rf venv  # macOS/Linux
-  rmdir /s venv  # Windows
-  python -m venv venv
+  rm -rf venv
+  python3.11 -m venv venv
   ```
 
 ### Package installation errors
@@ -422,7 +408,7 @@ flake8 .
   1. Install ipykernel in your virtual environment:
      ```bash
      pip install ipykernel
-     python -m ipykernel install --user --name=venv
+     python3.11 -m ipykernel install --user --name=venv
      ```
   2. Reload VS Code window: `Ctrl+Shift+P` → "Developer: Reload Window"
   3. Reselect the kernel in the notebook

@@ -20,6 +20,7 @@
     // Python Settings for Jupyter
     "python.defaultInterpreterPath": "/usr/bin/python3",
     "jupyter.jupyterServerType": "local",
-    "python-envs.defaultPackageManager": "ms-python.python:conda",
-    "python-envs.pythonProjects": []
+    "python-envs.defaultPackageManager": "ms-python.python:pip",
+    "python-envs.pythonProjects": [],
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }

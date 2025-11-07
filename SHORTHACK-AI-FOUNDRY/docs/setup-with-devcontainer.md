@@ -129,7 +129,7 @@ Once the container is ready, create your environment configuration file:
 
 1. **Check Python version**:
    ```bash
-   python --version
+   python3.11 --version
    ```
    Expected output: `Python 3.11.x`
 
