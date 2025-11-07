@@ -30,8 +30,3 @@ python -m pip install --upgrade pip setuptools wheel
 echo "📚 Installing Python packages for Azure AI Foundry Workshop..."
 pip install -r requirements.txt
 echo "✅ Installed packages from requirements.txt"
-
-# Install Azure CLI extensions
-echo "☁️  Installing Azure CLI extensions..."
-az extension add --name ml --yes 2>/dev/null || echo "Azure ML extension already installed"
-az extension add --name ai-examples --yes 2>/dev/null || echo "AI Examples extension installation skipped"

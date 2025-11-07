@@ -42,7 +42,7 @@ Open your terminal and run:
 
 ```bash
 git clone https://github.com/huanji-sun-007/short-hack-20251113.git
-cd SHORTHACK-AI-FOUNDRY
+cd cd short-hack-20251113/SHORTHACK-AI-FOUNDRY
 ```
 
 ### Step 2: Open in Visual Studio Code

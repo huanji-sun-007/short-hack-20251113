@@ -42,7 +42,7 @@ This guide will help you set up the Model Context Protocol (MCP) Lab environment
 ### Azure & Codebeamer Requirements
 
 - **Azure Subscription** with an Azure OpenAI resource
-  - Deployed Chat Completion Model (e.g., `gpt-4o`, `gpt-4o-mini`)
+  - Deployed Chat Completion Model (e.g., `gpt-4o`)
 - **Codebeamer Instance** with valid API credentials (for Labs 2 and 3)
 
 ## 🚀 Step-by-Step Setup
@@ -116,15 +116,8 @@ This will install:
 
 **Expected time**: 2-5 minutes depending on your internet connection
 
-### Step 6: Install Wikipedia MCP Server (Lab 1)
 
-For Lab 1, install the Wikipedia MCP server:
-
-```bash
-pip install wikipedia-mcp
-```
-
-### Step 7: Install VS Code Extensions
+### Step 6: Install VS Code Extensions
 
 Open Visual Studio Code and install these recommended extensions:
 
@@ -155,7 +148,7 @@ code --install-extension charliermarsh.ruff
 code --install-extension esbenp.prettier-vscode
 ```
 
-### Step 8: Configure Python Interpreter in VS Code
+### Step 7: Configure Python Interpreter in VS Code
 
 1. Open the project folder in VS Code:
    ```bash
@@ -170,7 +163,7 @@ code --install-extension esbenp.prettier-vscode
    - Should show path like `./venv/bin/python` or `.\venv\Scripts\python.exe`
    - May be labeled as `Python 3.11.x ('venv')`
 
-### Step 9: Configure Environment Variables
+### Step 8: Configure Environment Variables
 
 Create your environment configuration file:
 
@@ -197,7 +190,7 @@ Create your environment configuration file:
    AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
    AZURE_OPENAI_API_KEY=your-api-key
    AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o
-   AZURE_OPENAI_API_VERSION=2024-02-01
+   AZURE_OPENAI_API_VERSION=
    
    # Codebeamer Configuration (for Labs 2 and 3)
    CODEBEAMER_URL=https://your-codebeamer-instance.com
@@ -228,49 +221,7 @@ Create your environment configuration file:
    python -c "import semantic_kernel; print('Semantic Kernel version:', semantic_kernel.__version__)"
    ```
 
-### Step 11: Install Additional Tools (Optional)
-
-#### UV Package Manager (Faster Python package installation)
-
-**macOS/Linux:**
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-**Windows (PowerShell):**
-```powershell
-powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
-```
-
-After installation, you can use `uv pip install` instead of `pip install` for faster installations.
-
-#### Azure CLI
-
-The Azure CLI is helpful for managing Azure resources:
-
-**Windows:**
-```powershell
-# Using winget
-winget install -e --id Microsoft.AzureCLI
-```
-
-**macOS:**
-```bash
-brew update && brew install azure-cli
-```
-
-**Linux:**
-```bash
-curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
-```
-
-After installation, login to Azure:
-```bash
-az login
-az account set --subscription "your-subscription-id"
-```
-
-### Step 12: Start the Labs
+### Step 11: Start the Labs
 
 1. **Open the labs folder** in VS Code Explorer
 2. **Start with the first lab**: `labs/01_connecting_to_an_mcp_server.md`
@@ -293,143 +244,11 @@ You'll need to activate the virtual environment each time you open a new termina
 source venv/bin/activate
 ```
 
-### Installing Additional Packages
-
-With virtual environment activated:
-
-```bash
-pip install package-name
-```
-
-To persist packages, add them to `requirements.txt`:
-```bash
-pip freeze > requirements.txt
-```
-
 ### Updating Dependencies
 
 ```bash
 pip install --upgrade -r requirements.txt
 ```
-
-### Running MCP Server
-
-To run the custom Codebeamer MCP server:
-
-```bash
-python servers/mcp_server.py
-```
-
-The server should start and listen for MCP client connections.
-
-### Running Jupyter Notebooks
-
-If you prefer JupyterLab over VS Code's notebook interface:
-
-1. Install JupyterLab:
-   ```bash
-   pip install jupyterlab
-   ```
-
-2. Start JupyterLab:
-   ```bash
-   jupyter lab
-   ```
-
-This will open JupyterLab in your default browser at `http://localhost:8888`
-
-### Deactivating Virtual Environment
-
-When you're done working:
-
-```bash
-deactivate
-```
-
-## 📝 Development Environment Configuration
-
-### VS Code Settings (Optional)
-
-Create or update `.vscode/settings.json` in your project folder:
-
-```json
-{
-    "python.defaultInterpreterPath": "${workspaceFolder}/venv/bin/python",
-    "python.formatting.provider": "black",
-    "python.formatting.blackArgs": ["--line-length=120"],
-    "python.linting.enabled": true,
-    "python.linting.ruffEnabled": true,
-    "python.linting.ruffArgs": [
-        "--line-length",
-        "120",
-        "--extend-select",
-        "I"
-    ],
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.black-formatter"
-    },
-    "[markdown]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "editor.formatOnSave": true,
-    "jupyter.askForKernelRestart": false
-}
-```
-
-### Code Formatting
-
-Format your Python code using Black:
-
-```bash
-# Format a single file
-black your_file.py
-
-# Format entire project
-black .
-```
-
-Check code quality with Ruff:
-```bash
-ruff check .
-```
-
-## 🔧 MCP Configuration
-
-### Configuring MCP for GitHub Copilot Chat
-
-Create `.vscode/mcp.json` to configure MCP servers for GitHub Copilot Chat:
-
-```json
-{
-  "mcpServers": {
-    "wikipedia": {
-      "command": "python",
-      "args": ["-m", "wikipedia_mcp"]
-    }
-  }
-}
-```
-
-For the custom Codebeamer MCP server (Lab 2):
-
-```json
-{
-  "mcpServers": {
-    "codebeamer": {
-      "command": "python",
-      "args": ["servers/mcp_server.py"]
-    }
-  }
-}
-```
-
-**Note**: Make sure to use absolute paths or ensure the commands are accessible from your virtual environment.
 
 ## ❓ Troubleshooting
 
@@ -439,43 +258,6 @@ For the custom Codebeamer MCP server (Lab 2):
 - **Windows**: Reinstall Python 3.11 and check "Add Python to PATH"
 - **macOS**: Install Python 3.11 with `brew install python@3.11` and ensure it's in your PATH
 - **Linux**: Install Python 3.11 with `sudo apt install python3.11`
-
-### Virtual environment not activating
-
-**Issue**: Permission errors on Windows
-- **Solution**: Run PowerShell as Administrator and execute:
-  ```powershell
-  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-  ```
-
-**Issue**: Virtual environment not found
-- **Solution**: Recreate the virtual environment:
-  
-  **Windows:**
-  ```powershell
-  Remove-Item -Recurse -Force venv
-  python -m venv venv
-  ```
-  
-  **macOS/Linux:**
-  ```bash
-  rm -rf venv
-  python3.11 -m venv venv
-  ```
-
-### Package installation errors
-
-**Issue**: Pip install fails with compilation errors
-- **Solution**: Install build tools
-  - **Windows**: [Visual Studio Build Tools](https://visualstudio.microsoft.com/downloads/#build-tools-for-visual-studio-2022)
-  - **Linux**: `sudo apt install build-essential python3-dev`
-  - **macOS**: `xcode-select --install`
-
-**Issue**: SSL certificate errors
-- **Solution**: Update pip and certificates:
-  ```bash
-  pip install --upgrade pip certifi
-  ```
 
 ### Jupyter kernel not found
 
@@ -507,24 +289,6 @@ For the custom Codebeamer MCP server (Lab 2):
   4. Verify Python path in MCP config points to virtual environment
   5. Restart VS Code
 
-**Issue**: MCP server fails to start
-- **Solution**:
-  1. Check if all dependencies are installed
-  2. Verify environment variables are set correctly
-  3. Run the server manually to see error messages:
-     ```bash
-     python servers/mcp_server.py
-     ```
-
-### Semantic Kernel issues
-
-**Issue**: Azure OpenAI authentication fails
-- **Solution**: 
-  1. Verify `.env` file has correct values
-  2. Check Azure OpenAI endpoint and API key
-  3. Ensure deployment name matches your Azure OpenAI deployment
-  4. Login via Azure CLI: `az login`
-
 ## 📚 Next Steps
 
 Once your environment is set up:
@@ -541,14 +305,6 @@ Once your environment is set up:
 - [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/)
 - [FastMCP Documentation](https://gofastmcp.com/getting-started/welcome)
 - [Jupyter Documentation](https://jupyter.org/documentation)
-
-## 💡 Tips
-
-- **Always activate your virtual environment** before working on the project
-- **Keep your dependencies updated** regularly with `pip install --upgrade -r requirements.txt`
-- **Use `.gitignore`** to avoid committing your `venv` folder and `.env` file
-- **Consider using pyenv** for managing multiple Python versions on the same machine
-- **Use UV** for faster package installations: `uv pip install package-name`
 
 ---
 

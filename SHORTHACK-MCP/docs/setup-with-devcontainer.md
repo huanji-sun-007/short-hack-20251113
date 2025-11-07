@@ -130,7 +130,7 @@ Once the container is ready, create your environment configuration file:
    AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
    AZURE_OPENAI_API_KEY=your-api-key
    AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o
-   AZURE_OPENAI_API_VERSION=2024-02-01
+   AZURE_OPENAI_API_VERSION=2025-03-01-preview
    
    # Codebeamer Configuration (for Labs 2 and 3)
    CODEBEAMER_URL=https://your-codebeamer-instance.com
@@ -157,20 +157,8 @@ Once the container is ready, create your environment configuration file:
    az --version
    ```
 
-4. **Check UV**:
-   ```bash
-   uv --version
-   ```
 
-### Step 7: Install Wikipedia MCP Server (Lab 1)
-
-For Lab 1, you'll need the Wikipedia MCP server:
-
-```bash
-pip install wikipedia-mcp
-```
-
-### Step 8: Start the Labs
+### Step 7: Start the Labs
 
 1. **Open the labs folder** in VS Code Explorer
 2. **Start with the first lab**: `labs/01_connecting_to_an_mcp_server.md`
