@@ -16,10 +16,10 @@ This guide will help you set up the Azure AI Foundry Workshop environment using 
 
 3. **Docker Desktop**
    - **Windows**: [Docker Desktop for Windows](https://www.docker.com/products/docker-desktop/) with WSL2 backend
+     - **Alternative**: If you can't use Docker Desktop, try WSL2 + Docker Engine. See [this blog](https://qiita.com/oya_tadashi/items/3e3b026c161658484aba) for setup instructions
    - **macOS**: [Docker Desktop for Mac](https://www.docker.com/products/docker-desktop/)
    - **Linux**: [Docker Engine](https://docs.docker.com/engine/install/) or Docker Desktop
    - Ensure Docker is running before proceeding
-
 4. **Git**
    - Usually included with VS Code
    - Or download from [git-scm.com](https://git-scm.com/)
@@ -34,12 +34,6 @@ This guide will help you set up the Azure AI Foundry Workshop environment using 
 - **Storage**: At least 10GB free space for container images and dependencies
 - **Internet**: Stable connection for downloading container images and dependencies
 
-### Azure Requirements
-
-- **Azure Subscription** - [Create a free account](https://azure.microsoft.com/free/) if you don't have one
-- **Azure AI Foundry Project** - Created through [Azure AI Foundry Portal](https://ai.azure.com)
-- **Azure OpenAI Deployment** - GPT-4o model deployment
-
 ## 🚀 Step-by-Step Setup
 
 ### Step 1: Clone the Repository
@@ -47,7 +41,7 @@ This guide will help you set up the Azure AI Foundry Workshop environment using 
 Open your terminal and run:
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/huanji-sun-007/short-hack-20251113.git
 cd SHORTHACK-AI-FOUNDRY
 ```
 
@@ -131,12 +125,6 @@ Once the container is ready, create your environment configuration file:
    MODEL_DEPLOYMENT_NAME="gpt-4o"
    ```
 
-**Where to find these values:**
-- Go to [Azure AI Foundry Portal](https://ai.azure.com)
-- Select your project
-- Navigate to **Settings** → **Project properties**
-- Copy the Subscription ID, Tenant ID, and Project Connection String
-
 ### Step 6: Verify Installation
 
 1. **Check Python version**:
@@ -183,9 +171,8 @@ Your DevContainer comes pre-configured with:
 ### Python Packages
 - ✅ Azure AI Foundry SDK
 - ✅ Azure Identity & Authentication
-- ✅ OpenAI SDK
-- ✅ Data science libraries (pandas, numpy, matplotlib)
 - ✅ Jupyter & JupyterLab
+- ✅ Development tools (Black, isort, flake8)
 
 ### Port Forwarding
 - ✅ Port 8888 (Jupyter)
@@ -201,19 +188,6 @@ If you need to rebuild the container (e.g., after updating `devcontainer.json`):
 1. Press `Ctrl+Shift+P` / `Cmd+Shift+P`
 2. Select: **"Dev Containers: Rebuild Container"**
 
-### Installing Additional Packages
-
-```bash
-pip install package-name
-```
-
-To persist packages, add them to `requirements.txt` and rebuild the container.
-
-### Accessing the Terminal
-
-- Use the integrated terminal in VS Code
-- Or press `` Ctrl+` `` (backtick) to toggle terminal
-
 ### Stopping the Container
 
 1. Press `Ctrl+Shift+P` / `Cmd+Shift+P`
@@ -227,13 +201,6 @@ Or simply close VS Code.
 
 **Issue**: Docker is not running
 - **Solution**: Start Docker Desktop and wait for it to fully initialize
-
-**Issue**: Permission errors (Linux)
-- **Solution**: Add your user to the docker group:
-  ```bash
-  sudo usermod -aG docker $USER
-  ```
-  Then log out and back in
 
 ### Slow performance
 
@@ -249,14 +216,6 @@ Or simply close VS Code.
 **Issue**: VS Code extensions not installed
 - **Solution**: Rebuild the container:
   - `Ctrl+Shift+P` / `Cmd+Shift+P` → "Dev Containers: Rebuild Container"
-
-### Python packages missing
-
-**Issue**: Import errors for installed packages
-- **Solution**: Run the post-create command manually:
-  ```bash
-  pip install -r requirements.txt
-  ```
 
 ## 📚 Next Steps
 

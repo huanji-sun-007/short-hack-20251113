@@ -112,10 +112,9 @@ pip install -r requirements.txt
 
 This will install:
 - Azure AI Foundry SDK and related packages
-- OpenAI SDK
-- Data science libraries (pandas, numpy, matplotlib, etc.)
 - Jupyter and JupyterLab
 - Development tools (Black, isort, flake8)
+- Python utilities (python-dotenv)
 
 **Expected time**: 3-10 minutes depending on your internet connection
 
@@ -216,12 +215,18 @@ Create your environment configuration file:
    ```
    Should point to your `venv` directory
 
-2. **Verify Azure packages are installed**:
+2. **Verify installed packages**:
    ```bash
    pip list | grep azure  # macOS/Linux
    pip list | findstr azure  # Windows
    ```
    You should see packages like `azure-ai-projects`, `azure-identity`, etc.
+   
+   Also verify Jupyter is installed:
+   ```bash
+   pip list | grep jupyter  # macOS/Linux
+   pip list | findstr jupyter  # Windows
+   ```
 
 3. **Test Jupyter installation**:
    ```bash
