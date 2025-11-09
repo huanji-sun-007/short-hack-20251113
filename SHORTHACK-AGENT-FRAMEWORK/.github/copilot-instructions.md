@@ -2,49 +2,74 @@
 
 ## Project Purpose
 
-This repository is a **hands-on training asset** for teaching developers how to use the **Microsoft Agent Framework** (https://github.com/microsoft/agent-framework, https://learn.microsoft.com/en-us/agent-framework/).
+This repository is a **hands-on training asset** for teaching developers how to use the **Microsoft Agent Framework** (https://github.com/microsoft/agent-framework, https://learn.microsoft.com/en-us/agent-framework/) with **Azure AI Foundry** integration.
 
 ## Project Structure
 
 ### Training Format
-- **Medium**: Python files in lab directories
-- **Duration**: Approximately 3 hours total
-- **Labs**: Progressive learning labs with executable Python examples
+- **Medium**: Numbered Python files in the `labs/` directory
+- **Duration**: Approximately 3-4 hours total
+- **Labs**: 8 progressive learning modules with executable Python examples
 - **Approach**: Self-paced, hands-on, with exercises
+- **Infrastructure**: Azure AI Foundry project with automated deployment
 
 ### Learning Labs
 
-Each lab is contained in a separate directory under `labs/` with Python files and exercises:
+Labs are numbered sequentially in the `labs/` directory as Python files:
 
-1. **Lab 01: Agent Fundamentals** (~45 minutes)
-   - Creating agents from scratch
-   - Basic agent configuration
-   - Running simple agent tasks
+1. **01-azure_open_ai_chat_api.py** - Azure OpenAI Chat Basics
+   - Basic Azure OpenAI Chat client
+   - Simple agent creation
+   - Running queries with agents
    - Understanding agent responses
 
-2. **Lab 02: Function Tools** (~45 minutes)
+2. **02-azure_open_ai_responses_api.py** - Responses API
+   - Using Azure OpenAI Responses API
+   - Advanced response handling
+   - Response formatting and parsing
+
+3. **03-azure_open_ai_responses_api_tools.py** - Function Tools
    - Adding custom function tools to agents
    - Function calling and tool integration
-   - Tool parameter handling
-   - Error handling in tools
+   - Tool parameter handling with Pydantic
+   - **03-exercise.py** - Practice exercises
 
-3. **Lab 03: Multi-Agent Orchestration** (~45 minutes)
-   - Running multiple agents together
-   - Agent collaboration patterns
-   - Orchestration strategies
-   - Agent team workflows
+4. **04-azure_open_ai_responses_api_streaming.py** - Streaming Responses
+   - Streaming API responses
+   - Real-time response handling
+   - Token-by-token output
 
-4. **Lab 04: Thread Management** (~45 minutes)
+5. **05-azure_open_ai_responses_api_code_interpreter.py** - Code Interpreter
+   - Using built-in code interpreter tool
+   - Dynamic code execution
+   - Data analysis capabilities
+   
+   **05-azure_open_ai_responses_api_threads.py** - Thread Management
    - Managing conversation threads
    - State management across interactions
    - Context handling and persistence
-   - Thread lifecycle management
+
+6. **06-azure_open_ai_responses_api_multimodal.py** - Multimodal Inputs
+   - Processing images and text
+   - Multimodal agent capabilities
+   - Vision-enabled agents
+
+7. **07-azure_ai_hosted_agent.py** - Azure AI Foundry Hosted Agents
+   - Using Azure AI Foundry project
+   - Hosted agent deployment
+   - Cloud-based agent execution
+   - Azure CLI authentication
+
+8. **08-sub_workflow_basics.py** - Sub-Workflows
+   - Creating sub-workflows
+   - Agent orchestration patterns
+   - Complex multi-step workflows
 
 ## Target Audience
 
 - Developers learning to build AI agents
 - Engineers exploring Microsoft Agent Framework
-- Teams wanting to implement agent-based solutions
+- Teams wanting to implement agent-based solutions with Azure AI Foundry
 - Workshop participants in training sessions
 
 ## Technical Environment
@@ -52,8 +77,12 @@ Each lab is contained in a separate directory under `labs/` with Python files an
 - **Container**: Dev Container with Python 3.11
 - **Framework**: Microsoft Agent Framework (pre-installed)
 - **Interface**: Python files executed via VS Code terminal
-- **Cloud Integration**: Azure OpenAI services support
-- **Additional Tools**: Azure SDK, common Python libraries
+- **Cloud Integration**: 
+  - Azure AI Foundry project
+  - Azure OpenAI services
+  - Azure CLI authentication
+- **Infrastructure**: Bicep-based deployment with automated setup
+- **Additional Tools**: Azure SDK, Pydantic, python-dotenv
 
 ## When Providing Assistance
 
@@ -95,10 +124,12 @@ Each lab is contained in a separate directory under `labs/` with Python files an
 ## Success Criteria
 
 Learners completing this workshop should be able to:
-- Create and configure AI agents independently
-- Add custom tools to extend agent capabilities
-- Design multi-agent systems for complex tasks
-- Manage conversation state and threads effectively
+- Create and configure AI agents using Azure OpenAI
+- Implement function tools with proper parameter validation
+- Use streaming and multimodal capabilities
+- Manage conversation state with threads
+- Deploy and use Azure AI Foundry hosted agents
+- Design sub-workflows for complex orchestration
 - Apply agent patterns to real-world problems
 
 ## Important Notes

@@ -14,57 +14,63 @@ const HTTP_API_ENDPOINT = process.env.REACT_APP_HTTP_API_ENDPOINT;
  * @returns {Promise<Object>} Response data
  */
 async function makeApiRequest(endpoint, options = {}) {
-    try {
-        if (!HTTP_API_ENDPOINT) {
-            throw new Error('HTTP_API_ENDPOINT is not configured in environment variables');
-        }
-
-        const url = `${HTTP_API_ENDPOINT}${endpoint}`;
-        console.log(`API Request: ${options.method || 'GET'} ${url}`);
-
-        // Check if user is authenticated
-        if (!isAuthenticated()) {
-            console.warn('User not authenticated, attempting login...');
-            try {
-                await login();
-            } catch (loginError) {
-                throw new Error('Authentication required. Please log in with your Microsoft account.');
-            }
-        }
-
-        // Get access token
-        const accessToken = await getAccessToken();
-        if (!accessToken) {
-            throw new Error('Failed to obtain access token. Please try logging in again.');
-        }
-
-        const headers = {
-            'Accept': 'application/json',
-            'Authorization': `Bearer ${accessToken}`,
-            ...options.headers
-        };
-
-        const response = await fetch(url, {
-            ...options,
-            headers
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            throw new Error(
-                `API request failed: ${response.status} ${response.statusText}` +
-                (errorData.detail ? ` - ${JSON.stringify(errorData.detail)}` : '')
-            );
-        }
-
-        const data = await response.json();
-        console.log('API request completed successfully:', data);
-        
-        return data;
-    } catch (error) {
-        console.error(`Error during API request to ${endpoint}:`, error);
-        throw error;
+  try {
+    if (!HTTP_API_ENDPOINT) {
+      throw new Error(
+        'HTTP_API_ENDPOINT is not configured in environment variables'
+      );
     }
+
+    const url = `${HTTP_API_ENDPOINT}${endpoint}`;
+    console.log(`API Request: ${options.method || 'GET'} ${url}`);
+
+    // Check if user is authenticated
+    if (!isAuthenticated()) {
+      console.warn('User not authenticated, attempting login...');
+      try {
+        await login();
+      } catch (loginError) {
+        throw new Error(
+          'Authentication required. Please log in with your Microsoft account.'
+        );
+      }
+    }
+
+    // Get access token
+    const accessToken = await getAccessToken();
+    if (!accessToken) {
+      throw new Error(
+        'Failed to obtain access token. Please try logging in again.'
+      );
+    }
+
+    const headers = {
+      Accept: 'application/json',
+      Authorization: `Bearer ${accessToken}`,
+      ...options.headers,
+    };
+
+    const response = await fetch(url, {
+      ...options,
+      headers,
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json().catch(() => ({}));
+      throw new Error(
+        `API request failed: ${response.status} ${response.statusText}` +
+          (errorData.detail ? ` - ${JSON.stringify(errorData.detail)}` : '')
+      );
+    }
+
+    const data = await response.json();
+    console.log('API request completed successfully:', data);
+
+    return data;
+  } catch (error) {
+    console.error(`Error during API request to ${endpoint}:`, error);
+    throw error;
+  }
 }
 
 /**
@@ -73,17 +79,17 @@ async function makeApiRequest(endpoint, options = {}) {
  * @returns {Promise<Object>} Validation results including compliance status
  */
 export async function validateSpecification(specificationItemId) {
-    console.log(`Validating specification item: ${specificationItemId}`);
-    
-    return makeApiRequest('/api/validate', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            specification_item_id: specificationItemId
-        })
-    });
+  console.log(`Validating specification item: ${specificationItemId}`);
+
+  return makeApiRequest('/api/validate', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      specification_item_id: specificationItemId,
+    }),
+  });
 }
 
 /**
@@ -92,11 +98,13 @@ export async function validateSpecification(specificationItemId) {
  * @returns {Promise<Object>} Cached validation results or empty result if not found
  */
 export async function getLastValidationResult(specificationItemId) {
-    console.log(`Retrieving last validation result for specification item: ${specificationItemId}`);
-    
-    return makeApiRequest(`/api/validate/last/${specificationItemId}`, {
-        method: 'GET'
-    });
+  console.log(
+    `Retrieving last validation result for specification item: ${specificationItemId}`
+  );
+
+  return makeApiRequest(`/api/validate/last/${specificationItemId}`, {
+    method: 'GET',
+  });
 }
 
 /**
@@ -106,20 +114,24 @@ export async function getLastValidationResult(specificationItemId) {
  * @param {string} descriptionFormat - Format of the description ('Wiki' or 'Plain')
  * @returns {Promise<Object>} Updated tracker item information
  */
-export async function updateItemDescription(itemId, description, descriptionFormat = 'Wiki') {
-    console.log(`Updating description for item: ${itemId}`);
-    
-    return makeApiRequest('/api/items/description', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-            item_id: itemId,
-            description: description,
-            description_format: descriptionFormat
-        })
-    });
+export async function updateItemDescription(
+  itemId,
+  description,
+  descriptionFormat = 'Wiki'
+) {
+  console.log(`Updating description for item: ${itemId}`);
+
+  return makeApiRequest('/api/items/description', {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      item_id: itemId,
+      description: description,
+      description_format: descriptionFormat,
+    }),
+  });
 }
 
 /**
@@ -129,31 +141,25 @@ export async function updateItemDescription(itemId, description, descriptionForm
  * @param {number} [baselineId] - Optional baseline ID
  * @returns {Promise<Object>} Tracker item information
  */
-export async function getTrackerItem(itemId, version = null, baselineId = null) {
-    console.log(`Getting tracker item: ${itemId}`);
-    
-    const queryParams = new URLSearchParams();
-    if (version !== null) queryParams.append('version', version);
-    if (baselineId !== null) queryParams.append('baseline_id', baselineId);
-    
-    const queryString = queryParams.toString();
-    const endpoint = `/api/items/${itemId}${queryString ? `?${queryString}` : ''}`;
-    
-    return makeApiRequest(endpoint, {
-        method: 'GET'
-    });
-}
+export async function getTrackerItem(
+  itemId,
+  version = null,
+  baselineId = null
+) {
+  console.log(`Getting tracker item: ${itemId}`);
 
-/**
- * Get all projects from Codebeamer
- * @returns {Promise<Object>} List of projects
- */
-export async function getProjects() {
-    console.log('Getting all projects');
-    
-    return makeApiRequest('/api/projects', {
-        method: 'GET'
-    });
+  const queryParams = new URLSearchParams();
+  if (version !== null) queryParams.append('version', version);
+  if (baselineId !== null) queryParams.append('baseline_id', baselineId);
+
+  const queryString = queryParams.toString();
+  const endpoint = `/api/items/${itemId}${
+    queryString ? `?${queryString}` : ''
+  }`;
+
+  return makeApiRequest(endpoint, {
+    method: 'GET',
+  });
 }
 
 /**
@@ -161,11 +167,11 @@ export async function getProjects() {
  * @returns {Promise<Object>} Health check response
  */
 export async function checkHealth() {
-    console.log('Checking server health');
-    
-    return makeApiRequest('/health', {
-        method: 'GET'
-    });
+  console.log('Checking server health');
+
+  return makeApiRequest('/health', {
+    method: 'GET',
+  });
 }
 
 /**
@@ -173,9 +179,9 @@ export async function checkHealth() {
  * @returns {Promise<Object>} API information
  */
 export async function getApiInfo() {
-    console.log('Getting API info');
-    
-    return makeApiRequest('/', {
-        method: 'GET'
-    });
+  console.log('Getting API info');
+
+  return makeApiRequest('/', {
+    method: 'GET',
+  });
 }

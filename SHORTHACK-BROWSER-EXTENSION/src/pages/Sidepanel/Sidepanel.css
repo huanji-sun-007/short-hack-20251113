@@ -127,7 +127,7 @@
     background: rgba(239, 68, 68, 0.05);
 }
 
-/* Reload Codebeamer button in tab header */
+/* Reload Main Page button in tab header */
 .tab-header .reload-cb-btn {
     background: rgba(16, 185, 129, 0.1);
     border: 1px solid rgba(16, 185, 129, 0.3);
