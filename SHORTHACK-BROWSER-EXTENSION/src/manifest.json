@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "DOM Monitor",
+  "name": "Short Hack",
   "description": "A browser extension that monitors DOM changes and displays DOM size",
   "background": {
     "service_worker": "background.bundle.js"

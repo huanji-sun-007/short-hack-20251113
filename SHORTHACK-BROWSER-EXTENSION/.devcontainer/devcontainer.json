@@ -38,7 +38,7 @@
   "postCreateCommand": "bash .devcontainer/postCreateCommand.sh",
 
   "mounts": [
-    "source=shorthack-node-modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
+    "source=${localWorkspaceFolderBasename}-node_modules,target=${containerWorkspaceFolder}/node_modules,type=volume"
   ],
 
   "remoteUser": "node",

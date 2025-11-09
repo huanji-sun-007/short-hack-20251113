@@ -4,8 +4,7 @@
 set -e
 
 echo "� Installing npm dependencies and building the extension..."
-sudo chown -R node:node node_modules
+sudo chown node node_modules
 npm install
-npm run build
 
 echo "✅ Dev container setup complete!"
