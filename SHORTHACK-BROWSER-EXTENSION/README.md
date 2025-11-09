@@ -7,11 +7,13 @@ This project is designed for teaching how to build a browser extension, specific
 ### Initial Setup and Build
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Build the extension:**
+
    ```bash
    npm run build
    ```
@@ -47,6 +49,7 @@ This command starts a development server with hot reload enabled. Any changes yo
 ## Learn More
 
 This extension serves as a practical example for understanding:
+
 - Extension manifest configuration
 - Background scripts and content scripts
 - Side panel implementation
