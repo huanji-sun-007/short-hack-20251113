@@ -19,7 +19,13 @@ for (var entryName in config.entry) {
       `webpack-dev-server/client?hot=true&hostname=localhost&port=${env.PORT}`,
     ].concat(config.entry[entryName]);
   }
-  console.log(`Entry "${entryName}": Hot reload ${excludeEntriesToHotReload.indexOf(entryName) === -1 ? 'ENABLED' : 'DISABLED'}`);
+  console.log(
+    `Entry "${entryName}": Hot reload ${
+      excludeEntriesToHotReload.indexOf(entryName) === -1
+        ? 'ENABLED'
+        : 'DISABLED'
+    }`
+  );
 }
 
 delete config.chromeExtensionBoilerplate;
@@ -52,6 +58,14 @@ var server = new WebpackDevServer(
       'Access-Control-Allow-Origin': '*',
     },
     allowedHosts: 'all',
+    // Add watch options for devcontainer
+    watchFiles: {
+      paths: ['src/**/*'],
+      options: {
+        usePolling: true,
+        interval: 1000,
+      },
+    },
   },
   compiler
 );

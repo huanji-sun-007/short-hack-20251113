@@ -269,6 +269,12 @@ var options = {
   infrastructureLogging: {
     level: 'info',
   },
+  // Add watch options for devcontainer compatibility
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: isDevelopment ? 1000 : false, // Check for changes every second in development
+    ignored: /node_modules/,
+  },
 };
 
 if (env.NODE_ENV === 'development') {
