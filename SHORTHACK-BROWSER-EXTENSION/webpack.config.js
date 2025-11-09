@@ -60,6 +60,7 @@ if (!isDevelopment) {
 var options = {
   mode: process.env.NODE_ENV || 'development',
   entry: entries,
+  bail: !isDevelopment, // Fail on first error in production
   chromeExtensionBoilerplate: {
     notHotReload: ['background', 'contentScript'],
   },
