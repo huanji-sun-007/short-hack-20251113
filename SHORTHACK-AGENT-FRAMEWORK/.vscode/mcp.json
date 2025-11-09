@@ -12,7 +12,7 @@
 			"type": "stdio",
 			"command": "python",
 			"args": [
-				"labs/08-azure_ai_stdio_mcp_server.py"
+				"resources/stdio_mcp_server.py"
 			]
 		}
 	},
