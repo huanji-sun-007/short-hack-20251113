@@ -24,33 +24,6 @@ The lab shows two patterns:
 - Tools defined when running the agent (run-level)
 """
 
-
-async def mcp_tools_on_run_level() -> None:
-    """Example showing MCP tools defined when running the agent."""
-    print("=== Tools Defined on Run Level ===")
-
-    # Tools are provided when running the agent
-    # This means we connect to the MCP server before running the agent
-    # and pass the tools to the run method.
-    async with (
-        AzureCliCredential() as credential,
-        MCPStdioTool(
-            name="Weather MCP Server",
-            command="python",
-            args=["labs/09-azure_ai_stdio_mcp_server.py"],
-        ) as mcp_server,
-        ChatAgent(
-            chat_client=AzureAIAgentClient(async_credential=credential),
-            name="WeatherAgent",
-            instructions="You are a helpful weather assistant that can provide weather information for locations.",
-        ) as agent,
-    ):
-        query = "What's the weather like in Seattle and Tokyo?"
-        print(f"User: {query}")
-        result = await agent.run(query, tools=mcp_server)
-        print(f"{agent.name}: {result}\n")
-
-
 async def mcp_tools_on_agent_level() -> None:
     """Example showing tools defined when creating the agent."""
     print("=== Tools Defined on Agent Level ===")
@@ -66,7 +39,7 @@ async def mcp_tools_on_agent_level() -> None:
             tools=MCPStdioTool(  # Tools defined at agent creation
                 name="Weather MCP Server",
                 command="python",
-                args=["labs/09-azure_ai_stdio_mcp_server.py"],
+                args=["labs/08-azure_ai_stdio_mcp_server.py"],
             ),
         ) as agent,
     ):
@@ -80,7 +53,6 @@ async def main() -> None:
     print("=== Azure AI Chat Client Agent with Stdio MCP Server Examples ===\n")
 
     await mcp_tools_on_agent_level()
-    await mcp_tools_on_run_level()
 
 
 if __name__ == "__main__":
