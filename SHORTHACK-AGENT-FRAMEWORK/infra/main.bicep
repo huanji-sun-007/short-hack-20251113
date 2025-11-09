@@ -16,3 +16,6 @@ output AZURE_OPENAI_CHAT_DEPLOYMENT_NAME string = foundry.outputs.openAiDeployme
 output AZURE_OPENAI_RESPONSES_DEPLOYMENT_NAME string = foundry.outputs.openAiDeploymentName
 output AZURE_OPENAI_API_VERSION string = foundry.outputs.openAiApiVersion
 output AZURE_OPENAI_ACCOUNT_NAME string = foundry.outputs.openAiAccountName
+output AZURE_AI_PROJECT_NAME string = foundry.outputs.projectName
+output AZURE_AI_PROJECT_ENDPOINT string = foundry.outputs.projectEndpoint
+output AZURE_AI_PROJECT_ID string = foundry.outputs.projectId
