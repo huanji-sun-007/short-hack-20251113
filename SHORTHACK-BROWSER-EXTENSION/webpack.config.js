@@ -53,8 +53,20 @@ var entries = {
 };
 
 if (!isDevelopment) {
-  entries.contentScript = path.join(__dirname, 'src', 'pages', 'Content', 'index.js');
-  entries.background = path.join(__dirname, 'src', 'pages', 'Background', 'index.js');
+  entries.contentScript = path.join(
+    __dirname,
+    'src',
+    'pages',
+    'Content',
+    'index.js'
+  );
+  entries.background = path.join(
+    __dirname,
+    'src',
+    'pages',
+    'Background',
+    'index.js'
+  );
 }
 
 var options = {
@@ -67,7 +79,7 @@ var options = {
   target: ['web', 'es5'], // Ensure compatibility with browser extensions
   output: {
     filename: '[name].bundle.js',
-    path: BUILD_ENVIRONMENT 
+    path: BUILD_ENVIRONMENT
       ? path.resolve(__dirname, `build-${BUILD_ENVIRONMENT}`)
       : path.resolve(__dirname, 'build'),
     clean: true,
@@ -153,28 +165,37 @@ var options = {
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
     // In development mode, don't clean background.bundle.js and contentScript.bundle.js
-    new CleanWebpackPlugin({ 
+    new CleanWebpackPlugin({
       verbose: false,
-      cleanOnceBeforeBuildPatterns: isDevelopment 
-        ? ['sidepanel.bundle.js', 'sidepanel.html', '*.css', '!background.bundle.js', '!contentScript.bundle.js']
-        : ['**/*']
+      cleanOnceBeforeBuildPatterns: isDevelopment
+        ? [
+            'sidepanel.bundle.js',
+            'sidepanel.html',
+            '*.css',
+            '!background.bundle.js',
+            '!contentScript.bundle.js',
+          ]
+        : ['**/*'],
     }),
     new webpack.ProgressPlugin(),
     // expose and write the allowed env vars on the compiled bundle
     new webpack.EnvironmentPlugin({
       NODE_ENV: 'development',
-      REACT_APP_AZURE_BOT_DIRECT_LINE_SECRET: process.env.REACT_APP_AZURE_BOT_DIRECT_LINE_SECRET || '',
-      REACT_APP_HTTP_API_ENDPOINT: process.env.REACT_APP_HTTP_API_ENDPOINT || '',
+      REACT_APP_AZURE_BOT_DIRECT_LINE_SECRET:
+        process.env.REACT_APP_AZURE_BOT_DIRECT_LINE_SECRET || '',
+      REACT_APP_HTTP_API_ENDPOINT:
+        process.env.REACT_APP_HTTP_API_ENDPOINT || '',
       // Microsoft Entra ID Authentication
       REACT_APP_ENTRA_CLIENT_ID: process.env.REACT_APP_ENTRA_CLIENT_ID || '',
-      REACT_APP_ENTRA_TENANT_ID: process.env.REACT_APP_ENTRA_TENANT_ID || 'organizations',
-      REACT_APP_API_SCOPE: process.env.REACT_APP_API_SCOPE || ''
+      REACT_APP_ENTRA_TENANT_ID:
+        process.env.REACT_APP_ENTRA_TENANT_ID || 'organizations',
+      REACT_APP_API_SCOPE: process.env.REACT_APP_API_SCOPE || '',
     }),
     new CopyWebpackPlugin({
       patterns: [
         {
           from: 'src/manifest.json',
-          to: BUILD_ENVIRONMENT 
+          to: BUILD_ENVIRONMENT
             ? path.join(__dirname, `build-${BUILD_ENVIRONMENT}`)
             : path.join(__dirname, 'build'),
           force: true,
@@ -182,17 +203,24 @@ var options = {
             // generates the manifest file using the package.json informations
             const manifest = JSON.parse(content.toString());
             const originalName = manifest.name;
-            const environmentName = BUILD_ENVIRONMENT 
-              ? `${originalName} (${BUILD_ENVIRONMENT.charAt(0).toUpperCase() + BUILD_ENVIRONMENT.slice(1)})`
+            const environmentName = BUILD_ENVIRONMENT
+              ? `${originalName} (${
+                  BUILD_ENVIRONMENT.charAt(0).toUpperCase() +
+                  BUILD_ENVIRONMENT.slice(1)
+                })`
               : originalName;
-            
+
             return Buffer.from(
-              JSON.stringify({
-                description: process.env.npm_package_description,
-                version: process.env.npm_package_version,
-                ...manifest,
-                name: environmentName,
-              }, null, 2)
+              JSON.stringify(
+                {
+                  description: process.env.npm_package_description,
+                  version: process.env.npm_package_version,
+                  ...manifest,
+                  name: environmentName,
+                },
+                null,
+                2
+              )
             );
           },
         },
@@ -202,7 +230,7 @@ var options = {
       patterns: [
         {
           from: 'src/assets/img/icon-128.png',
-          to: BUILD_ENVIRONMENT 
+          to: BUILD_ENVIRONMENT
             ? path.join(__dirname, `build-${BUILD_ENVIRONMENT}`)
             : path.join(__dirname, 'build'),
           force: true,
@@ -213,7 +241,7 @@ var options = {
       patterns: [
         {
           from: 'src/assets/img/icon-34.png',
-          to: BUILD_ENVIRONMENT 
+          to: BUILD_ENVIRONMENT
             ? path.join(__dirname, `build-${BUILD_ENVIRONMENT}`)
             : path.join(__dirname, 'build'),
           force: true,

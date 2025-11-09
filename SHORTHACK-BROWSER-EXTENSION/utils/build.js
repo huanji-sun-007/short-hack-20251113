@@ -15,7 +15,7 @@ webpack(config, function (err, stats) {
     console.error('❌ Fatal webpack error:', err);
     process.exit(1);
   }
-  
+
   if (stats.hasErrors()) {
     console.error('\n❌ Build failed with errors:\n');
     const info = stats.toJson({ errors: true });
@@ -24,7 +24,7 @@ webpack(config, function (err, stats) {
     });
     process.exit(1);
   }
-  
+
   if (stats.hasWarnings()) {
     console.warn('\n⚠️  Build warnings:\n');
     const info = stats.toJson({ warnings: true });
@@ -32,14 +32,16 @@ webpack(config, function (err, stats) {
       console.warn(warning.message || warning);
     });
   }
-  
+
   console.log('\n✅ Build completed successfully\n');
-  console.log(stats.toString({
-    colors: true,
-    chunks: false,
-    modules: false,
-    children: false,
-    assets: true,
-    timings: true
-  }));
+  console.log(
+    stats.toString({
+      colors: true,
+      chunks: false,
+      modules: false,
+      children: false,
+      assets: true,
+      timings: true,
+    })
+  );
 });
