@@ -15,7 +15,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 async def main() -> None:
-    # Write your code here
     pass
 
 if __name__ == "__main__":
