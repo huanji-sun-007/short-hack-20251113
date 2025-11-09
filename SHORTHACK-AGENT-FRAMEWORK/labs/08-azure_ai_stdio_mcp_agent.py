@@ -24,13 +24,7 @@ The lab shows two patterns:
 - Tools defined when running the agent (run-level)
 """
 
-async def mcp_tools_on_agent_level() -> None:
-    """Example showing tools defined when creating the agent."""
-    print("=== Tools Defined on Agent Level ===")
-
-    # Tools are provided when creating the agent
-    # The agent can use these tools for any query during its lifetime
-    # The agent will connect to the MCP server through its context manager.
+async def main() -> None:
     async with (
         AzureCliCredential() as credential,
         AzureAIAgentClient(async_credential=credential).create_agent(
@@ -47,12 +41,6 @@ async def mcp_tools_on_agent_level() -> None:
         print(f"User: {query}")
         result = await agent.run(query)
         print(f"{agent.name}: {result}\n")
-
-
-async def main() -> None:
-    print("=== Azure AI Chat Client Agent with Stdio MCP Server Examples ===\n")
-
-    await mcp_tools_on_agent_level()
 
 
 if __name__ == "__main__":

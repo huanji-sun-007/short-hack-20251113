@@ -17,16 +17,10 @@ Prerequisites:
    python labs/09-azure_ai_http_mcp_server.py
 
 2. Run this lab:
-   python labs/09-azure_ai_http_mcp.py
+   python labs/09-azure_ai_http_mcp_agent.py
 """
 
-
 async def main() -> None:
-    print("=== Azure AI Chat Client Agent with HTTP MCP Server ===\n")
-
-    # Tools are provided when creating the agent
-    # The agent can use these tools for any query during its lifetime
-    # The agent will connect to the MCP server through its context manager.
     async with (
         AzureCliCredential() as credential,
         AzureAIAgentClient(async_credential=credential).create_agent(
@@ -38,11 +32,10 @@ async def main() -> None:
             ),
         ) as agent,
     ):
-        query = "What's the weather like in Paris and Seattle?"
+        query = "What's the weather like in Tokyo?"
         print(f"User: {query}")
         result = await agent.run(query)
-        print(f"{agent.name}: {result}\n")
-
+        print(f"{agent.name}: {result}\n")   
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -19,9 +19,7 @@ def get_weather(
     conditions = ["sunny", "cloudy", "rainy", "stormy"]
     return f"The weather in {location} is {conditions[randint(0, 3)]} with a high of {randint(10, 30)}°C."
 
-async def main() -> None:
-    print("=== Basic Azure AI Chat Client Agent Example ===")
-
+async def run() -> None:
     async with (
         AzureCliCredential() as credential,
         AzureAIAgentClient(async_credential=credential).create_agent(
@@ -34,8 +32,9 @@ async def main() -> None:
         print(f"User: {query}")
         result = await agent.run(query)
         print(f"Agent: {result}\n")
-        input("Check the agent WeatherAgent and thread in AI Foundry and press Enter to continue...")
 
+async def main() -> None:
+    await run()
 
 if __name__ == "__main__":
     asyncio.run(main())
