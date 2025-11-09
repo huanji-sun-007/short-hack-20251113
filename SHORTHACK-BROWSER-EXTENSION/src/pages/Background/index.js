@@ -38,70 +38,41 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 
 // Handle messages between content script and sidepanel
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'page_context_updated') {
-    console.log(
-      'Short Hack: Received page context from content script for tab:',
-      sender.tab?.id,
-      message
-    );
-    // Forward the message to the sidepanel
+  if (message.type === 'dom_updated') {
+    console.log('Received DOM from content script for tab:', sender.tab?.id);
+    // Forward the DOM data to the sidepanel
     chrome.runtime
       .sendMessage({
-        type: 'page_context_data',
+        type: 'dom_data',
         data: message.data,
         url: message.url,
         timestamp: message.timestamp,
         tabId: sender.tab?.id,
       })
       .catch((error) => {
-        console.error('Short Hack: Error sending message to sidepanel:', error);
+        console.error('Error sending DOM to sidepanel:', error);
       });
-  } else if (message.type === 'request_page_context') {
-    // Get page context from active tab
+  } else if (message.type === 'request_dom') {
+    // Get DOM from active tab
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       if (tabs[0]) {
-        chrome.tabs.sendMessage(
-          tabs[0].id,
-          { type: 'get_page_context' },
-          (response) => {
-            if (response) {
-              chrome.runtime
-                .sendMessage({
-                  type: 'page_context_data',
-                  data: response.data,
-                  url: response.url,
-                  timestamp: response.timestamp,
-                  tabId: tabs[0].id,
-                })
-                .catch(() => {});
-            }
+        chrome.tabs.sendMessage(tabs[0].id, { type: 'get_dom' }, (response) => {
+          if (response) {
+            chrome.runtime
+              .sendMessage({
+                type: 'dom_data',
+                data: response.data,
+                url: response.url,
+                timestamp: response.timestamp,
+                tabId: tabs[0].id,
+              })
+              .catch(() => {});
           }
-        );
+        });
       }
-    });
-  } else if (message.type === 'reload_page') {
-    console.log('Short Hack: Reload request received from sidepanel');
-    // Reload the active tab
-    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-      if (tabs[0]) {
-        chrome.tabs
-          .sendMessage(tabs[0].id, { type: 'reload_page' })
-          .catch((error) => {
-            console.error(
-              'Error sending reload message to content script:',
-              error
-            );
-          });
-      }
-    });
-  } else if (message.type === 'reload_service_worker') {
-    console.log(
-      'Short Hack: Reload request for service worker received from sidepanel'
-    );
-    chrome.runtime.reload().finally(() => {
-      console.log('Short Hack: Service worker reloaded');
     });
   }
+  return true;
 });
 
 console.log('Background script loaded');

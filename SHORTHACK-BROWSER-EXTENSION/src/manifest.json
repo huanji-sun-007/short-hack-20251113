@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Short Hack",
-  "description": "A browser extension assisting used for training as part of Short Hack",
+  "name": "DOM Monitor",
+  "description": "A browser extension that monitors DOM changes and displays DOM size",
   "background": {
     "service_worker": "background.bundle.js"
   },
@@ -11,19 +11,13 @@
   "side_panel": {
     "default_path": "sidepanel.html"
   },
-  "permissions": ["sidePanel", "tabs", "storage", "identity"],
-  "host_permissions": [
-    "https://directline.botframework.com/*",
-    "https://*.botframework.com/*",
-    "https://login.microsoftonline.com/*",
-    "https://graph.microsoft.com/*"
-  ],
+  "permissions": ["sidePanel", "tabs"],
   "icons": {
     "128": "icon-128.png"
   },
   "content_scripts": [
     {
-      "matches": ["https://trial.codebeamer.com/*", "https://codebeamer.com/*"],
+      "matches": ["<all_urls>"],
       "js": ["contentScript.bundle.js"]
     }
   ],

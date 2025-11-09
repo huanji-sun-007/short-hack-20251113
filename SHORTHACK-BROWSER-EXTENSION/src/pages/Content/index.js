@@ -1,60 +1,48 @@
 console.log('Content script works!');
 console.log('Must reload extension for modifications to take effect.');
 
-// Function to extract page context (projectId, trackerId, specificationItemId)
-function extractPageContext() {
-  const pageText = document.body.innerHTML;
-
-  // Extract Project ID from [PROJ:xxxxx] pattern
-  const projMatch = pageText.match(/\[PROJ:(\d+)\]/);
-  const projectId = projMatch ? projMatch[1] : null;
-
-  // Extract Tracker ID from [TRACKER:xxxxx] pattern
-  const trackerMatch = pageText.match(/\[TRACKER:(\d+)\]/);
-  const trackerId = trackerMatch ? trackerMatch[1] : null;
-
-  // Extract Specification Item ID from [ISSUE:xxxxx] pattern
-  const issueMatch = pageText.match(/\[ISSUE:(\d+)\]/);
-  const specificationItemId = issueMatch ? issueMatch[1] : null;
-
-  let context = { projectId, trackerId, specificationItemId };
-  console.log('Short Hack: Extracted page context:', context);
-  return context;
+// Function to get the entire DOM as a string
+function getDOMContent() {
+  return document.documentElement.outerHTML;
 }
 
-// Function to send page context data to sidepanel
-function sendPageContextToSidepanel() {
-  console.log('Short Hack: Extracting page context...');
-  const pageContext = extractPageContext();
+// Function to send DOM data to sidepanel
+function sendDOMToSidepanel() {
+  console.log('Sending DOM to sidepanel...');
+  const domContent = getDOMContent();
+  const domSize = domContent.length;
+
+  console.log(`DOM size: ${domSize} characters`);
+
   chrome.runtime
     .sendMessage({
-      type: 'page_context_updated',
-      data: pageContext,
+      type: 'dom_updated',
+      data: {
+        dom: domContent,
+        size: domSize,
+      },
       url: window.location.href,
       timestamp: Date.now(),
     })
     .catch((error) => {
-      console.error('Short Hack: Error sending message to sidepanel:', error);
-    })
-    .finally(() => {
-      console.log('Short Hack: Page context sent to sidepanel');
+      console.error('Error sending DOM to sidepanel:', error);
     });
 }
 
 // Initial scan - wait for DOM to be ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    sendPageContextToSidepanel();
+    sendDOMToSidepanel();
   });
 } else {
-  sendPageContextToSidepanel();
+  sendDOMToSidepanel();
 }
 
 // Also scan when page is fully loaded
 if (document.readyState !== 'complete') {
   window.addEventListener('load', () => {
     setTimeout(() => {
-      sendPageContextToSidepanel();
+      sendDOMToSidepanel();
     }, 500);
   });
 }
@@ -62,29 +50,32 @@ if (document.readyState !== 'complete') {
 // Set up MutationObserver to watch for DOM changes
 const observer = new MutationObserver((mutations) => {
   // Debounce the update to avoid too many rapid calls
-  clearTimeout(window.pageContextUpdateTimeout);
-  window.pageContextUpdateTimeout = setTimeout(sendPageContextToSidepanel, 100);
+  clearTimeout(window.domUpdateTimeout);
+  window.domUpdateTimeout = setTimeout(sendDOMToSidepanel, 100);
 });
 
 // Start observing
-observer.observe(document, {
+observer.observe(document.documentElement, {
   childList: true,
   subtree: true,
+  attributes: true,
+  characterData: true,
 });
 
 // Listen for messages from background script
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  if (message.type === 'get_page_context') {
-    const pageContext = extractPageContext();
+  if (message.type === 'get_dom') {
+    const domContent = getDOMContent();
     sendResponse({
-      data: pageContext,
+      data: {
+        dom: domContent,
+        size: domContent.length,
+      },
       url: window.location.href,
       timestamp: Date.now(),
     });
-  } else if (message.type === 'reload_page') {
-    console.log('Short Hack: Reloading page...');
-    window.location.reload();
   }
+  return true;
 });
 
-console.log('Page context scanner initialized');
+console.log('DOM monitor initialized');
