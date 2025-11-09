@@ -9,7 +9,7 @@ from azure.identity import AzureCliCredential
 from pydantic import Field
 
 """
-Azure OpenAI Responses Client Basic Example
+Azure OpenAI Responses Client Basic Example using a tool
 """
 from dotenv import load_dotenv
 load_dotenv()

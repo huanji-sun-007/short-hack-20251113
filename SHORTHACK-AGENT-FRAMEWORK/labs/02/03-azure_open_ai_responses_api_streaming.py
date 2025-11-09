@@ -9,7 +9,7 @@ from azure.identity import AzureCliCredential
 from pydantic import Field
 
 """
-Azure OpenAI Responses Client Basic Example
+Azure OpenAI Responses Client Basic Example of streaming responses
 """
 from dotenv import load_dotenv
 load_dotenv()
@@ -19,7 +19,7 @@ async def main() -> None:
         instructions="You are a car designer",
     )
 
-    query = "Write a specification for a futuristic electric car using 300 words"
+    query = "Write a specification for a futuristic electric car using 500 words"
     print(f"User: {query}")
     print("Agent (non-streaming): ", end="", flush=True)
     result = await agent.run(query)

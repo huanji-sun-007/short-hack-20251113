@@ -9,12 +9,8 @@ from azure.identity.aio import AzureCliCredential
 from pydantic import Field
 
 """
-Azure AI Agent Basic Example
-
-This sample demonstrates basic usage of AzureAIAgentClient to create agents with automatic
-lifecycle management. Shows both streaming and non-streaming responses with function tools.
+Azure AI Hosted Agent Basic Example
 """
-
 
 def get_weather(
     location: Annotated[str, Field(description="The location to get the weather for.")],
@@ -38,7 +34,7 @@ async def main() -> None:
         print(f"User: {query}")
         result = await agent.run(query)
         print(f"Agent: {result}\n")
-        input("Check the agent and thread in the foundry and press Enter to continue...")
+        input("Check the agent WeatherAgent and thread in AI Foundry and press Enter to continue...")
 
 
 if __name__ == "__main__":

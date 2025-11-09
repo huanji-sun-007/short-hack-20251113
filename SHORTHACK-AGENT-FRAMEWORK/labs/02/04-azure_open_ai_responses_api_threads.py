@@ -30,8 +30,6 @@ async def example_with_automatic_thread_creation() -> None:
     """Example showing automatic thread creation."""
     print("=== Automatic Thread Creation Example ===")
 
-    # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
-    # authentication option.
     agent = ChatAgent(
         chat_client=AzureOpenAIResponsesClient(credential=AzureCliCredential()),
         instructions="You are a helpful weather agent.",
@@ -59,8 +57,6 @@ async def example_with_thread_persistence_in_memory() -> None:
     """
     print("=== Thread Persistence Example (In-Memory) ===")
 
-    # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
-    # authentication option.
     agent = ChatAgent(
         chat_client=AzureOpenAIResponsesClient(credential=AzureCliCredential()),
         instructions="You are a helpful weather agent.",
@@ -100,8 +96,6 @@ async def example_with_existing_thread_id() -> None:
     # First, create a conversation and capture the thread ID
     existing_thread_id = None
 
-    # For authentication, run `az login` command in terminal or replace AzureCliCredential with preferred
-    # authentication option.
     agent = ChatAgent(
         chat_client=AzureOpenAIResponsesClient(credential=AzureCliCredential()),
         instructions="You are a helpful weather agent.",
