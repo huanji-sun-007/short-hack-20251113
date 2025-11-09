@@ -3,10 +3,14 @@ targetScope = 'resourceGroup'
 @description('The location where resources will be deployed')
 param location string = resourceGroup().location
 
+@description('Id of the user or app to assign application roles')
+param principalId string = ''
+
 module foundry 'modules/foundry.bicep' = {
   name: 'foundryDeployment'
   params: {
     location: location
+    principalId: principalId
   }
 }
 
@@ -19,3 +23,4 @@ output AZURE_OPENAI_ACCOUNT_NAME string = foundry.outputs.openAiAccountName
 output AZURE_AI_PROJECT_NAME string = foundry.outputs.projectName
 output AZURE_AI_PROJECT_ENDPOINT string = foundry.outputs.projectEndpoint
 output AZURE_AI_PROJECT_ID string = foundry.outputs.projectId
+output AZURE_AI_MODEL_DEPLOYMENT_NAME string = foundry.outputs.openAiDeploymentName
