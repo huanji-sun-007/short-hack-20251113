@@ -148,7 +148,6 @@ This project uses a pre-configured Dev Container with:
 
 - Bicep templates for Azure deployment in `infra/`
 - Automated deployment via Azure Developer CLI (azd)
-- See `infra/DEPLOYMENT_UPDATES.md` for detailed deployment documentation
 
 ## 🎓 Learning Outcomes
 
