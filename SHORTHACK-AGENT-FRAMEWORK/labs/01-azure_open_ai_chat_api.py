@@ -1,15 +1,12 @@
 # Copyright (c) Microsoft. All rights reserved.
 
 import asyncio
-from random import randint
-from typing import Annotated
 
 from agent_framework.azure import AzureOpenAIChatClient
 from azure.identity import AzureCliCredential
-from pydantic import Field
 
 """
-Azure OpenAI Chat Client Basic Example
+Most basic agent example using Azure OpenAI Chat API
 """
 from dotenv import load_dotenv
 load_dotenv()
