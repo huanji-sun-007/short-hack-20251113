@@ -4,7 +4,7 @@
 HTTP MCP Server with Weather Tool using FastMCP
 
 This is a standalone MCP server that exposes a weather tool via HTTP transport.
-Run this server separately before running the 09-azure_ai_http_mcp.py lab.
+Run this server separately before running the **-azure_ai_http_mcp.py lab.
 
 To run this server:
     python labs/09-azure_ai_http_mcp_server.py
