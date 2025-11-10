@@ -3,10 +3,14 @@ targetScope = 'resourceGroup'
 @description('The location where resources will be deployed')
 param location string = resourceGroup().location
 
+@description('Id of the user or app to assign application roles')
+param principalId string = ''
+
 module foundry 'modules/foundry.bicep' = {
   name: 'foundryDeployment'
   params: {
     location: location
+    principalId: principalId
   }
 }
 
