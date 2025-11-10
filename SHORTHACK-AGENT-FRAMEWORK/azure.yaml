@@ -9,8 +9,6 @@ location: eastus2
 infra:
   provider: bicep
   path: infra
-  parameters:
-    principalId: ${AZURE_PRINCIPAL_ID}
 
 pipeline:
   provider: github
