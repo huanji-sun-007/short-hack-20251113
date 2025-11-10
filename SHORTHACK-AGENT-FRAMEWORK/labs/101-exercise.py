@@ -9,7 +9,7 @@ from azure.identity import AzureCliCredential
 from pydantic import Field
 
 """
-Exercise: Write a conversational agent using devui, with conversation state maintained in AI Foundry, preserved across executions.
+Exercise: Write a weather agent using devui, with conversation state preserved across executions.
 """
 from dotenv import load_dotenv
 load_dotenv()
