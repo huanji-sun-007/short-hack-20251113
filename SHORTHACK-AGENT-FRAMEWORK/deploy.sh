@@ -3,10 +3,6 @@
 
 set -e
 
-# Get the current user's principal ID (object ID)
-AZURE_PRINCIPAL_ID=$(az ad signed-in-user show --query id -o tsv)
-azd env set AZURE_PRINCIPAL_ID $AZURE_PRINCIPAL_ID
-
 azd provision
 azd env get-values > .env
 
