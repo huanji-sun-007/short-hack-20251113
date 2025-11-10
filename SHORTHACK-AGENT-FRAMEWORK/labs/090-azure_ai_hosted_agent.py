@@ -32,7 +32,7 @@ async def run() -> None:
         print(f"User: {query}")
         result = await agent.run(query)
         print(f"Agent: {result}\n")
-        input(f"Check the agent {agent} in AI Foundry, and press any key to continue and delete it...")
+        input(f"Check the agent {agent.name} in AI Foundry, and press any key to continue and delete it...")
 
 async def main() -> None:
     await run()
