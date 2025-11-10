@@ -1,0 +1,31 @@
+# Core Python packages
+jupyter
+jupyterlab
+ipykernel
+notebook
+
+# Microsoft Agent Framework
+agent-framework
+
+# Common data science and development packages
+numpy
+pandas
+matplotlib
+seaborn
+requests
+
+# Azure SDK packages (commonly used with Agent Framework)
+azure-identity
+azure-ai-inference
+azure-core
+
+# Code quality tools
+black
+flake8
+pytest
+pytest-asyncio
+
+# Additional helpful packages
+python-dotenv
+aiohttp
+pydantic

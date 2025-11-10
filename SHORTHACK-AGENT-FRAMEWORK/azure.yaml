@@ -1,0 +1,16 @@
+name: short-hack-agent-framework
+metadata:
+  template: short-hack-agent-framework@1.0.0
+
+# Configure default location and resource group
+resourceGroup: ${AZURE_ENV_NAME}-rg
+location: eastus2
+
+infra:
+  provider: bicep
+  path: infra
+  parameters:
+    principalId: ${AZURE_PRINCIPAL_ID}
+
+pipeline:
+  provider: github
