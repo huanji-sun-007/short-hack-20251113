@@ -17,8 +17,7 @@ Prerequisites:
 1. Start the MCP server in a separate terminal:
    python resources/http_mcp_server.py
 
-2. Run this lab:
-   python labs/09-azure_ai_http_mcp_agent.py
+2. Run this lab
 """
 
 async def main() -> None:
