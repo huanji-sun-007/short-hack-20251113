@@ -14,12 +14,16 @@ This training is designed to take you from zero to building sophisticated AI age
 - **Lab 050**: Streaming Responses - Real-time streaming API responses and token-by-token output
 - **Lab 060**: Code Interpreter - Built-in code interpreter tool and dynamic code execution
 - **Lab 070**: Multimodal Inputs - Processing images and text with vision-enabled agents (includes exercises)
-- **Lab 080**: Azure AI Foundry Hosted Agents - Cloud-based agent deployment and execution
-- **Lab 090**: Thread Management - Managing conversation threads and state persistence
-- **Lab 100**: Stdio MCP Integration - Integrating agents with local MCP servers via stdio transport
-- **Lab 110**: HTTP MCP Integration - Integrating agents with local MCP servers via HTTP transport
-- **Lab 120**: Remote HTTP MCP - Connecting to remote MCP services (includes exercises)
-- **Lab 130**: Sub-Workflows - Agent orchestration patterns and complex multi-step workflows
+- **Lab 080**: Thread Management - Managing conversation threads and state persistence with automatic and explicit thread creation
+- **Lab 090**: Azure AI Hosted Agents - Cloud-based agent deployment and execution with Azure AI Foundry
+- **Lab 100**: File Search - Using file search tools with vector stores to answer questions from documents
+- **Lab 110**: Dev UI - Interactive development UI for testing and debugging Azure AI agents
+- **Lab 120**: Stdio MCP Integration - Integrating agents with local MCP servers via stdio transport (includes exercises)
+- **Lab 130**: HTTP MCP Integration - Integrating agents with local MCP servers via HTTP transport
+- **Lab 140**: Remote HTTP MCP - Connecting to remote MCP services like Microsoft Learn MCP (includes exercises)
+- **Lab 150**: Workflow Basics - Building workflows with custom executors, Writer and Reviewer agent pattern
+- **Lab 160**: Sequential Workflows - Sequential orchestration with shared conversation context across agents
+- **Lab 170**: Concurrent Workflows - Parallel fan-out/fan-in patterns with concurrent agent execution
 
 ## 📚 Training Structure
 
@@ -34,14 +38,19 @@ labs/
 ├── 050-azure_open_ai_responses_api_streaming.py
 ├── 060-azure_open_ai_responses_api_code_interpreter.py
 ├── 070-azure_open_ai_responses_api_multimodal.py
-├── 071-exercise.py
-├── 080-azure_ai_hosted_agent.py
-├── 090-azure_open_ai_responses_api_threads.py
-├── 100-azure_ai_stdio_mcp_agent.py
-├── 110-azure_ai_http_mcp_agent.py
-├── 120-azure_ai_remote_http_mcp.py
-├── 121-exercise.py
-└── 130-sub_workflow_basics.py
+├── 081-exercise.py
+├── 080-azure_open_ai_responses_api_threads.py
+├── 090-azure_ai_hosted_agent.py
+├── 100-azure_ai_file_search.py
+├── 110-azure_ai_devui.py
+├── 111-exercise.py
+├── 120-azure_ai_stdio_mcp_agent.py
+├── 130-azure_ai_http_mcp_agent.py
+├── 140-azure_ai_remote_http_mcp.py
+├── 141-exercise.py
+├── 150-azure_open_ai_workflow.py
+├── 160-azure_open_ai_sequential.py
+└── 170-azure_open_ai_concurrent.py
 ```
 
 ### Lab Breakdown
@@ -54,12 +63,16 @@ labs/
 | 050 | Streaming | Streaming responses, real-time output, token handling |
 | 060 | Code Interpreter | Built-in code execution, dynamic Python code running, data analysis |
 | 070 | Multimodal | Image processing, vision capabilities, multimodal agents (with exercises) |
-| 080 | Azure AI Hosted Agents | Azure AI Foundry projects, cloud deployment, Azure CLI auth |
-| 090 | Thread Management | Conversation threads, state persistence, context management |
-| 100 | Stdio MCP Integration | Local MCP servers, stdio transport, agent-MCP communication |
-| 110 | HTTP MCP Integration | Local HTTP MCP servers, HTTP transport, streamable connections |
-| 120 | Remote HTTP MCP | Remote MCP services, Microsoft Learn MCP (with exercises) |
-| 130 | Sub-Workflows | Workflow orchestration, multi-step patterns, agent coordination |
+| 080 | Thread Management | Conversation threads, state persistence, automatic vs explicit thread creation |
+| 090 | Azure AI Hosted Agents | Azure AI Foundry projects, cloud deployment, Azure CLI auth |
+| 100 | File Search | Vector stores, file upload, document-based Q&A, retrieval-augmented generation |
+| 110 | Dev UI | Interactive web UI, agent testing, real-time debugging, browser-based chat |
+| 120 | Stdio MCP Integration | Local MCP servers, stdio transport, agent-MCP communication (with exercises) |
+| 130 | HTTP MCP Integration | Local HTTP MCP servers, HTTP transport, streamable connections |
+| 140 | Remote HTTP MCP | Remote MCP services, Microsoft Learn MCP integration (with exercises) |
+| 150 | Workflow Basics | WorkflowBuilder, custom executors, Writer-Reviewer pattern, event handling |
+| 160 | Sequential Workflows | SequentialBuilder, shared conversation context, agent chaining |
+| 170 | Concurrent Workflows | ConcurrentBuilder, fan-out/fan-in, parallel agent execution, aggregation |
 
 ## 🚀 Getting Started
 
@@ -153,17 +166,17 @@ labs/
 
 ### Recommended Approach
 
-1. **Sequential Learning**: Complete labs in order (010 → 020 → 030 → ... → 130)
+1. **Sequential Learning**: Complete labs in order (010 → 020 → 030 → ... → 170)
 2. **Hands-On Practice**: Run all Python files and experiment with modifications
-3. **Challenge Exercises**: Labs 030, 070, and 120 include practice exercises
-4. **MCP Server Setup**: Labs 100 and 110 require running separate MCP servers from the `resources/` directory
+3. **Challenge Exercises**: Labs 031, 081, 111, and 141 include practice exercises
+4. **MCP Server Setup**: Labs 120 and 130 require running separate MCP servers from the `resources/` directory
 5. **Build Projects**: Apply learned concepts to create your own agents
 
 ### Self-Paced Learning
 
 - Each lab is self-contained with explanations and examples
 - Python files are ready to run with clear outputs and comments
-- Exercises range from guided to open-ended
+- Exercises range from guided to open-ended (labs 031, 081, 111, 141)
 - Solutions and best practices are provided inline
 
 ## 🛠️ Environment
@@ -229,10 +242,10 @@ This training material is designed to be improved over time. Contributions are w
 
 - Don't just run code—read and understand the implementation
 - Experiment by modifying parameters and approaches
-- Complete exercises in labs 030, 070, and 120 before moving forward
-- For labs 100 and 110, start the MCP servers in separate terminals first:
-  - Lab 100: `python resources/stdio_mcp_server.py`
-  - Lab 110: `python resources/http_mcp_server.py`
+- Complete exercises in labs 031, 081, 111, and 141 before moving forward
+- For labs 120 and 130, start the MCP servers in separate terminals first:
+  - Lab 120: `python resources/stdio_mcp_server.py`
+  - Lab 130: `python resources/http_mcp_server.py`
 - Join community forums to discuss and share learnings
 - Review the deployed Azure resources in Azure Portal to understand infrastructure
 
@@ -277,17 +290,17 @@ This training material is designed to be improved over time. Contributions are w
 - Review Azure AI Foundry project permissions in Azure Portal
 - For Lab 080, ensure `AZURE_AI_PROJECT_ENDPOINT` points to correct project endpoint
 
-**Permission errors when running Lab 080**
+**Permission errors when running Lab 090**
 - Verify you have "Azure AI Developer" and "Cognitive Services OpenAI User" roles
 - For Option A (own deployment): Re-run deployment script to ensure role assignments: `./deploy.sh`
 - For Option B (shared resources): Contact your instructor to verify your account has proper role assignments
 - Check that `AZURE_PRINCIPAL_ID` environment variable is set (if using Option A)
 - Ensure you're authenticated with the correct tenant: `az account show`
 
-**MCP Server issues (Labs 100, 110)**
+**MCP Server issues (Labs 120, 130)**
 - Ensure the MCP server is running in a separate terminal before running the agent
-- For Lab 100: Start `python resources/stdio_mcp_server.py` first
-- For Lab 110: Start `python resources/http_mcp_server.py` first, verify it's listening on http://localhost:8000/mcp
+- For Lab 120: Start `python resources/stdio_mcp_server.py` first
+- For Lab 130: Start `python resources/http_mcp_server.py` first, verify it's listening on http://localhost:8000/mcp
 - Check that FastMCP is installed: `pip list | grep fastmcp`
 - Review server logs for any errors
 
