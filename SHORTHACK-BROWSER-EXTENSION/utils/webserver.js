@@ -45,7 +45,7 @@ var server = new WebpackDevServer(
       },
     },
     webSocketServer: 'sockjs',
-    host: 'localhost',
+    host: '0.0.0.0', // Bind to all interfaces for devcontainer access
     port: env.PORT,
     static: {
       directory: path.join(__dirname, '../build'),
