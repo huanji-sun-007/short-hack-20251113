@@ -2,6 +2,7 @@
 
 import asyncio
 
+from random import randint
 from agent_framework import ChatAgent, MCPStdioTool
 from agent_framework.azure import AzureAIAgentClient
 from azure.identity.aio import AzureCliCredential
@@ -28,7 +29,7 @@ async def main() -> None:
     async with (
         AzureCliCredential() as credential,
         AzureAIAgentClient(async_credential=credential).create_agent(
-            name="WeatherAgent",
+            name=f"WeatherAgent-{randint(1000, 9999)}",
             instructions="You are a helpful weather assistant that can provide weather information for locations.",
             tools=MCPStdioTool(  # Tools defined at agent creation
                 name="Weather MCP Server",

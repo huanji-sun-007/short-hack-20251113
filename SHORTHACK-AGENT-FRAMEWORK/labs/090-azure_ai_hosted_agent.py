@@ -23,7 +23,7 @@ async def run() -> None:
     async with (
         AzureCliCredential() as credential,
         AzureAIAgentClient(async_credential=credential).create_agent(
-            name="WeatherAgent",
+            name=f"WeatherAgent-{randint(1000, 9999)}",
             instructions="You are a helpful weather agent.",
             tools=get_weather,
         ) as agent,
@@ -32,6 +32,7 @@ async def run() -> None:
         print(f"User: {query}")
         result = await agent.run(query)
         print(f"Agent: {result}\n")
+        input(f"Check the agent {agent} in AI Foundry, and press any key to continue and delete it...")
 
 async def main() -> None:
     await run()
