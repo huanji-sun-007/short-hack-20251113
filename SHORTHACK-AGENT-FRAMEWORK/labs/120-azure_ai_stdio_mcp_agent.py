@@ -2,40 +2,47 @@
 
 import asyncio
 
-from agent_framework import ChatAgent, MCPStreamableHTTPTool
+from random import randint
+from agent_framework import ChatAgent, MCPStdioTool
 from agent_framework.azure import AzureAIAgentClient
 from azure.identity.aio import AzureCliCredential
 
 """
-Azure AI Agent with Local HTTP MCP Server
+Azure AI Agent with Local Stdio MCP Server
 
 This sample demonstrates integration of Azure AI Agents with a local Model Context Protocol (MCP)
-server running via HTTP transport. The MCP server must be started separately.
+server running via stdio transport. The MCP server must be started separately.
 
 Prerequisites:
 1. Start the MCP server in a separate terminal:
-   python resources/http_mcp_server.py
+   python labs/09-azure_ai_stdio_mcp_server.py
 
 2. Run this lab:
-   python labs/09-azure_ai_http_mcp_agent.py
+   python labs/09-azure_ai_stdio_mcp_agent.py
+
+The lab shows two patterns:
+- Tools defined at agent creation (agent-level)
+- Tools defined when running the agent (run-level)
 """
 
 async def main() -> None:
     async with (
         AzureCliCredential() as credential,
         AzureAIAgentClient(async_credential=credential).create_agent(
-            name="WeatherAgent",
+            name=f"WeatherAgent-{randint(1000, 9999)}",
             instructions="You are a helpful weather assistant that can provide weather information for locations.",
-            tools=MCPStreamableHTTPTool(  # Tools defined at agent creation
+            tools=MCPStdioTool(  # Tools defined at agent creation
                 name="Weather MCP Server",
-                url="http://localhost:8000/mcp",
+                command="python",
+                args=["resources/stdio_mcp_server.py"],
             ),
         ) as agent,
     ):
-        query = "What's the weather like in Tokyo?"
+        query = "What's the weather like in Paris?"
         print(f"User: {query}")
         result = await agent.run(query)
-        print(f"{agent.name}: {result}\n")   
+        print(f"{agent.name}: {result}\n")
+
 
 if __name__ == "__main__":
     asyncio.run(main())

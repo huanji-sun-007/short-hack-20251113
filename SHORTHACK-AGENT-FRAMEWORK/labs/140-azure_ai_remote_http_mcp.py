@@ -2,6 +2,7 @@
 
 import asyncio
 
+from random import randint
 from agent_framework import ChatAgent, MCPStreamableHTTPTool
 from agent_framework.azure import AzureAIAgentClient
 from azure.identity.aio import AzureCliCredential
@@ -14,7 +15,7 @@ async def main() -> None:
     async with (
         AzureCliCredential() as credential,
         AzureAIAgentClient(async_credential=credential).create_agent(
-            name="DocsAgent",
+            name=f"DocsAgent-{randint(1000, 9999)}",
             instructions="You are a helpful assistant that can help with microsoft documentation questions.",
             tools=MCPStreamableHTTPTool(  # Tools defined at agent creation
                 name="Microsoft Learn MCP",

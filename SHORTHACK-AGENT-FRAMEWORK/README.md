@@ -67,9 +67,17 @@ labs/
 
 - **Docker** installed and running
 - **VS Code** with the Dev Containers extension
-- **Azure subscription** with access to Azure OpenAI and Azure AI Foundry
+- **Azure tenant access** (either through your own subscription OR shared credentials from instructor)
 - Basic Python knowledge
 - (Optional) GitHub Copilot for enhanced coding assistance
+
+**For deploying your own infrastructure (Option A):**
+- Azure subscription with Contributor access
+- Sufficient quotas for Azure OpenAI and Azure AI Foundry
+
+**For using shared resources (Option B):**
+- `.env` file and tenant ID from your instructor or team lead
+- No Azure subscription required
 
 ### Setup Instructions
 
@@ -89,28 +97,49 @@ labs/
    - Or use Command Palette (Ctrl+Shift+P / Cmd+Shift+P): `Dev Containers: Reopen in Container`
    - Wait for the container to build (first time may take a few minutes)
 
-4. **Deploy Azure AI Foundry Resources**
+4. **Configure Azure AI Foundry Access**
+
+   You have two options to set up your environment:
+
+   **Option A: Deploy Your Own Azure AI Foundry Resources (Requires Azure Subscription)**
+   
    - Authenticate with Azure CLI:
-   ```bash
-   az login
-   ```
+     ```bash
+     az login
+     ```
    - Run the automated deployment script:
-   ```bash
-   ./deploy.sh
-   ```
+     ```bash
+     ./deploy.sh
+     ```
    - This will:
      - Deploy Azure AI Foundry project and Azure OpenAI resources
      - Configure GPT-4o model deployment
      - Set up role assignments for local development
      - Generate `.env` file with all connection details
 
-5. **Verify Setup**
-   - Check that `.env` file was created with these variables:
+   **Option B: Use Shared Azure AI Foundry Resources (No Azure Subscription Required)**
+   
+   - Obtain `.env` file with credentials from your instructor or team lead
+   - The `.env` file should contain:
      - `AZURE_OPENAI_ENDPOINT`
      - `AZURE_OPENAI_MODEL_DEPLOYMENT_NAME`
      - `AZURE_AI_PROJECT_ENDPOINT`
      - `AZURE_AI_PROJECT_NAME`
      - `AZURE_AI_MODEL_DEPLOYMENT_NAME`
+   - Copy the `.env` file to the repository root directory
+   - Authenticate with Azure CLI using the correct tenant:
+     ```bash
+     az login --tenant <tenant-id>
+     ```
+     (Replace `<tenant-id>` with the tenant ID provided by your instructor)
+   - Verify authentication:
+     ```bash
+     az account show
+     ```
+
+5. **Verify Setup**
+   - Check that `.env` file exists in the repository root with all required variables
+   - Ensure you're logged into the correct Azure tenant: `az account show`
 
 6. **Start Learning!**
    - Run labs sequentially starting with Lab 010:
@@ -221,6 +250,12 @@ This training material is designed to be improved over time. Contributions are w
 - Verify you have Contributor access to the subscription
 - Check Azure subscription has available quotas for Azure OpenAI
 - Review `deploy.sh` logs for specific error messages
+- If using shared resources (Option B), skip deployment and use the provided `.env` file instead
+
+**Wrong tenant / authentication issues**
+- If using shared resources, ensure you logged in with the correct tenant: `az login --tenant <tenant-id>`
+- Verify you're in the right tenant: `az account show` (check the `tenantId` field)
+- If needed, log out and log back in: `az logout` then `az login --tenant <tenant-id>`
 
 **Python execution issues**
 - Ensure you're running from the workspace root: `python labs/010-azure_open_ai_chat_api.py`
@@ -234,15 +269,20 @@ This training material is designed to be improved over time. Contributions are w
 
 **API/Authentication errors**
 - Ensure Azure CLI is authenticated: `az account show`
-- Check that role assignments were created during deployment
+- If using shared resources, verify you're logged into the correct tenant (check `tenantId` in output)
+- Check that `.env` file exists and contains all required variables
+- For Option A (own deployment): Check that role assignments were created during deployment
+- For Option B (shared resources): Verify the `.env` values are correct and up-to-date
 - Verify Azure OpenAI endpoint and model deployment name in `.env`
 - Review Azure AI Foundry project permissions in Azure Portal
 - For Lab 080, ensure `AZURE_AI_PROJECT_ENDPOINT` points to correct project endpoint
 
 **Permission errors when running Lab 080**
 - Verify you have "Azure AI Developer" and "Cognitive Services OpenAI User" roles
-- Re-run deployment script to ensure role assignments: `./deploy.sh`
-- Check that `AZURE_PRINCIPAL_ID` environment variable is set
+- For Option A (own deployment): Re-run deployment script to ensure role assignments: `./deploy.sh`
+- For Option B (shared resources): Contact your instructor to verify your account has proper role assignments
+- Check that `AZURE_PRINCIPAL_ID` environment variable is set (if using Option A)
+- Ensure you're authenticated with the correct tenant: `az account show`
 
 **MCP Server issues (Labs 100, 110)**
 - Ensure the MCP server is running in a separate terminal before running the agent
