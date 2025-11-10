@@ -21,7 +21,9 @@ This training is designed to take you from zero to building sophisticated AI age
 - **Lab 120**: Stdio MCP Integration - Integrating agents with local MCP servers via stdio transport (includes exercises)
 - **Lab 130**: HTTP MCP Integration - Integrating agents with local MCP servers via HTTP transport
 - **Lab 140**: Remote HTTP MCP - Connecting to remote MCP services like Microsoft Learn MCP (includes exercises)
-- **Lab 150**: Sub-Workflows - Agent orchestration patterns and complex multi-step workflows
+- **Lab 150**: Workflow Basics - Building workflows with custom executors, Writer and Reviewer agent pattern
+- **Lab 160**: Sequential Workflows - Sequential orchestration with shared conversation context across agents
+- **Lab 170**: Concurrent Workflows - Parallel fan-out/fan-in patterns with concurrent agent execution
 
 ## 📚 Training Structure
 
@@ -46,7 +48,9 @@ labs/
 ├── 130-azure_ai_http_mcp_agent.py
 ├── 140-azure_ai_remote_http_mcp.py
 ├── 141-exercise.py
-└── 150-sub_workflow_basics.py
+├── 150-azure_open_ai_workflow.py
+├── 160-azure_open_ai_sequential.py
+└── 170-azure_open_ai_concurrent.py
 ```
 
 ### Lab Breakdown
@@ -66,7 +70,9 @@ labs/
 | 120 | Stdio MCP Integration | Local MCP servers, stdio transport, agent-MCP communication (with exercises) |
 | 130 | HTTP MCP Integration | Local HTTP MCP servers, HTTP transport, streamable connections |
 | 140 | Remote HTTP MCP | Remote MCP services, Microsoft Learn MCP integration (with exercises) |
-| 150 | Sub-Workflows | Workflow orchestration, multi-step patterns, agent coordination |
+| 150 | Workflow Basics | WorkflowBuilder, custom executors, Writer-Reviewer pattern, event handling |
+| 160 | Sequential Workflows | SequentialBuilder, shared conversation context, agent chaining |
+| 170 | Concurrent Workflows | ConcurrentBuilder, fan-out/fan-in, parallel agent execution, aggregation |
 
 ## 🚀 Getting Started
 
@@ -160,7 +166,7 @@ labs/
 
 ### Recommended Approach
 
-1. **Sequential Learning**: Complete labs in order (010 → 020 → 030 → ... → 150)
+1. **Sequential Learning**: Complete labs in order (010 → 020 → 030 → ... → 170)
 2. **Hands-On Practice**: Run all Python files and experiment with modifications
 3. **Challenge Exercises**: Labs 031, 081, 111, and 141 include practice exercises
 4. **MCP Server Setup**: Labs 120 and 130 require running separate MCP servers from the `resources/` directory
