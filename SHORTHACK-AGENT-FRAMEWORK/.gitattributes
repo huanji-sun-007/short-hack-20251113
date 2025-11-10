@@ -1,5 +1,16 @@
 # Force the following filetypes to have unix eols, so Windows does not break them
-* text eol=lf
+* text=auto eol=lf
+
+# Binary files - do not apply line ending conversions
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
 
 # Declare files that will always have CRLF line endings on checkout.
 *.{cmd,[cC][mM][dD]} text eol=crlf
