@@ -44,7 +44,7 @@ Before you begin, ensure you have:
 ## 🚀 Quick Start
 
 1. Open the project in VS Code
-2. Finish the following labs
+2. Complete the following labs
 
 ## 🧪 Lab Descriptions
 
