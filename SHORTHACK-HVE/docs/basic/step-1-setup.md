@@ -94,7 +94,7 @@ How to interact with suggestions:
 - **Accept**: `Tab` (preferred) or `Enter` (single line)
 - **Reject / dismiss**: keep typing OR press `Esc`
 - **Next suggestion**: `Alt+]` (Windows/Linux) / `Option+]` (macOS)
-- **Previous suggestion**: `Alt+[ ` / `Option+[`
+- **Previous suggestion**: `Alt+[` / `Option+[`
 - **Trigger manually**: `Ctrl+Enter` / `Cmd+Enter`
 - **Explain / refine**: Use Copilot Chat (see next step)
 
