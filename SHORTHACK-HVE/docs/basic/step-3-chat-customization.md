@@ -85,6 +85,10 @@ Now let's add some basic instructions to guide Copilot's behavior.
    ## Documentation
    - Add docstrings to all functions and classes
    - Include examples in docstrings when helpful
+   
+   ## Error Handling
+   - Use custom exception classes instead of built-in exceptions
+   - Provide detailed error messages that include the problematic values
    ```
 
    Feel free to customize these based on your preferences!
@@ -94,9 +98,13 @@ Now let's add some basic instructions to guide Copilot's behavior.
    You can add instructions for specific programming languages:
    ```markdown
    ## Python Guidelines
-   - Use type hints for function parameters and return values
    - Prefer list comprehensions over loops when appropriate
    - Use f-strings for string formatting
+   - ALWAYS add type hints to all function parameters and return types
+   - Add input validation at the start of each function to check parameter types
+   - Include usage examples in docstrings using the >>> format
+   - Log function entry and exit using print statements for debugging
+   - Use `pydantic` for data validation and settings management
 
    ## JavaScript/TypeScript Guidelines
    - Use `const` by default, `let` only when reassignment is needed
