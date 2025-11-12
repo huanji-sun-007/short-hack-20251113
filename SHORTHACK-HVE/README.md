@@ -44,7 +44,7 @@ Before you begin, ensure you have:
 ## 🚀 Quick Start
 
 1. Open the project in VS Code
-2. Finish the following labs
+2. Complete the following labs
 
 ## 🧪 Lab Descriptions
 
@@ -64,7 +64,7 @@ Create custom instructions and chat modes tailored to your project needs. Learn 
 **Step 4: Set Up Project-Specific Copilot Configuration**  
 Define your own `copilot-instructions.md` and `engineering-fundamentals.md` files in the `.github` directory.
 
-> **Note:** See repository [microsoft/edge-ai](https://github.com/microsoft/edge-ai) repository. See the [prompt-builder.chatmode.md](https://github.com/microsoft/edge-ai/blob/main/.github/chatmodes/prompt-builder.chatmode.md) for the builder tool.
+> **Note:** See the [microsoft/edge-ai](https://github.com/microsoft/edge-ai) repository. See the [prompt-builder.chatmode.md](https://github.com/microsoft/edge-ai/blob/main/.github/chatmodes/prompt-builder.chatmode.md) for the builder tool.
 
 Predefined chat modes and instructions for this lab will be shared through download link.
 

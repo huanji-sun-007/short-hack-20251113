@@ -1,7 +1,7 @@
 ## Step 1: Set Up GitHub Copilot
 
 ### Overview
-Welcome to the GitHub Copilot hands‑on workshop. In this first step you will install and enable GitHub Copilot (and optionally Copilot Chat) in Visual Studio Code, then verify it works with an inline suggestion. Target time: 10 minutes.
+Welcome to the GitHub Copilot hands-on workshop. In this first step you will install and enable GitHub Copilot (and optionally Copilot Chat) in Visual Studio Code, then verify it works with an inline suggestion. Target time: 10 minutes.
 
 ### Prerequisites
 Make sure you have:
@@ -94,7 +94,7 @@ How to interact with suggestions:
 - **Accept**: `Tab` (preferred) or `Enter` (single line)
 - **Reject / dismiss**: keep typing OR press `Esc`
 - **Next suggestion**: `Alt+]` (Windows/Linux) / `Option+]` (macOS)
-- **Previous suggestion**: `Alt+[ ` / `Option+[`
+- **Previous suggestion**: `Alt+[` / `Option+[`
 - **Trigger manually**: `Ctrl+Enter` / `Cmd+Enter`
 - **Explain / refine**: Use Copilot Chat (see next step)
 
