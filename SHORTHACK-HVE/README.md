@@ -32,7 +32,12 @@ Before you begin, ensure you have:
 │   └── pbi/
 │       ├── pbi-001.md      # Create a Daily Fruit Prices API
 │       └── pbi-002.md      # Create the IaC with Terraform
-├── .github/         # GitHub Copilot configuration templates
+├── .github/                # GitHub Copilot configuration (shared during Hands-On)
+│   ├── copilot-instructions.md    # Custom instructions for Copilot
+│   └── chatmodes/                  # Custom chat modes
+│       ├── code-reviewer.chatmode.md
+│       ├── pbi-planner.chatmode.md
+│       └── architecture-visualizer.chatmode.md
 ├── docs/                   # Lab instructions and guides
 │   └── basic/              # Beginner tutorials
 │       ├── step-1-setup.md
@@ -40,6 +45,8 @@ Before you begin, ensure you have:
 │       └── step-3-chat-customization.md
 └── README.md              # This file
 ```
+
+> **Note**: The `.github/` directory contains pre-configured Copilot instructions and custom chat modes. These files will be shared via OneDrive during the Hands-On session to help you get started quickly.
 
 ## 🚀 Quick Start
 
