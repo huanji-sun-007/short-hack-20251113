@@ -66,6 +66,8 @@ Define your own `copilot-instructions.md` and `engineering-fundamentals.md` file
 
 > **Note:** See repository [microsoft/edge-ai](https://github.com/microsoft/edge-ai) repository. See the [prompt-builder.chatmode.md](https://github.com/microsoft/edge-ai/blob/main/.github/chatmodes/prompt-builder.chatmode.md) for the builder tool.
 
+Predefined chat modes and instructions for this lab will be shared through download link.
+
 **📄 Lab Files:**
 - [`docs/basic/step-1-setup.md`](docs/basic/step-1-setup.md)
 - [`docs/basic/step-2-simple-chat-usage.md`](docs/basic/step-2-simple-chat-usage.md)
