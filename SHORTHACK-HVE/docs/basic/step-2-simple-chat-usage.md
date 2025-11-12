@@ -86,13 +86,13 @@ Slash commands are quick shortcuts for common tasks. Type `/` in the chat input 
 
 3-1. **(Optional) Select relevant text** in the editor
 
-3-2. **Type `/` followed by the command** (e.g., `/list`)
+3-2. **Type `/` followed by the command** (e.g., `/help`)
 
    - Pick from the suggestions that appear after typing `/`
 
 3-3. **Press Enter** to execute the command
 
-   - For `/list`: Lists available tools
+   - For `/help`: Copilot lists available commands
 
 > **Note**: Slash commands save time by eliminating the need for full natural language questions.
 
@@ -219,16 +219,17 @@ Agent mode is Copilot's most powerful feature, allowing it to perform multi-step
 **Example request in Agent mode:**
 
 ```
-Add a new command-line option "--verbose" that enables detailed logging throughout the app.
+Create a Python calculator app with add, subtract, multiply, and divide functions under `calculator_app` folder. Add unit tests and run them to verify everything works.
 ```
 
 **Agent mode will:**
 
-- Identify files that need changes
-- Make edits to introduce the `--verbose` flag
-- Add conditional log statements
-- Run tests to verify it works
-- Iterate if errors occur
+- Create the project folder structure
+- Create `calculator.py` with the four math functions
+- Create `test_calculator.py` with unit tests
+- Run the tests automatically using pytest
+- Show test results in the chat
+- Fix any errors if tests fail and re-run them
 
 **Managing Tools in Agent Mode:**
 
