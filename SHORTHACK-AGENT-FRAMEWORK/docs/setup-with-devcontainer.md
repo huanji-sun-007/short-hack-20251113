@@ -1,6 +1,6 @@
 # Setup with DevContainer
 
-This guide will help you set up the Model Context Protocol (MCP) Lab environment using a DevContainer, which provides a consistent, pre-configured development environment with all tools and dependencies.
+This guide will help you set up the Agent Framework training environment using a DevContainer, which provides a consistent, pre-configured development environment with all tools and dependencies.
 
 ## 📋 Prerequisites
 
@@ -34,11 +34,11 @@ This guide will help you set up the Model Context Protocol (MCP) Lab environment
 - **Storage**: At least 10GB free space for container images and dependencies
 - **Internet**: Stable connection for downloading container images and dependencies
 
-### Azure & Codebeamer Requirements
+### Azure Requirements
 
-- **Azure Subscription** with an Azure OpenAI resource
-  - Deployed Chat Completion Model (e.g., `gpt-4o`)
-- **Codebeamer Instance** with valid API credentials (for Labs 2 and 3)
+- **Azure Subscription** with Azure AI Foundry access
+  - Azure OpenAI resource with deployed Chat Completion Model (e.g., `gpt-4o`)
+  - Azure AI Foundry project (can be deployed via included script)
 
 ## Environment Setup
 
@@ -48,7 +48,7 @@ Open your terminal and run:
 
 ```bash
 git clone https://github.com/huanji-sun-007/short-hack-20251113.git
-cd short-hack-20251113/SHORTHACK-MCP
+cd short-hack-20251113/SHORTHACK-AGENT-FRAMEWORK
 ```
 
 ### Step 2: Open in Visual Studio Code
@@ -90,10 +90,9 @@ You can monitor progress in the VS Code terminal window at the bottom of the scr
 
 2. **Check installed packages**:
    ```bash
-   pip list | grep semantic-kernel
-   pip list | grep mcp
+   pip list | grep agent-framework
    ```
-   You should see `semantic-kernel` and `mcp` packages listed
+   You should see `agent-framework` in the list
 
 3. **Check Azure CLI**:
    ```bash
@@ -118,24 +117,52 @@ Once the container is ready, create your environment configuration file:
    ```
 
 3. **Fill in the required values**:
+   
+   **Option A: If you deployed your own Azure resources**
+   - Run the deployment script: `./deploy.sh`
+   - The script will automatically generate the `.env` file
+   
+   **Option B: If using shared resources**
+   - Obtain `.env` file from your instructor
+   - Or manually fill in the values:
    ```bash
    # Azure OpenAI Configuration
    AZURE_OPENAI_ENDPOINT=https://your-resource.openai.azure.com/
-   AZURE_OPENAI_API_KEY=your-api-key
-   AZURE_OPENAI_DEPLOYMENT_NAME=gpt-4o
-   AZURE_OPENAI_API_VERSION=2025-03-01-preview
+   AZURE_OPENAI_MODEL_DEPLOYMENT_NAME=gpt-4o
    
-   # Codebeamer Configuration (for Labs 2 and 3)
-   CODEBEAMER_URL=https://your-codebeamer-instance.com
-   CODEBEAMER_API_KEY=your-codebeamer-api-key
+   # Azure AI Foundry Configuration
+   AZURE_AI_PROJECT_ENDPOINT=https://your-project.services.ai.azure.com/
+   AZURE_AI_PROJECT_NAME=your-project-name
+   AZURE_AI_MODEL_DEPLOYMENT_NAME=gpt-4o
    ```
 
-### Step 2: Start the Labs
+### Step 2: Authenticate with Azure
+
+Before running the labs, authenticate with Azure CLI:
+
+```bash
+az login
+```
+
+If using shared resources, authenticate with the correct tenant:
+```bash
+az login --tenant <tenant-id>
+```
+
+Verify you're logged in:
+```bash
+az account show
+```
+
+### Step 3: Start the Labs
 
 1. **Open the labs folder** in VS Code Explorer
-2. **Start with the first lab**: `labs/01_connecting_to_an_mcp_server.md`
-3. Follow the instructions to configure MCP with GitHub Copilot Chat
-4. Continue with Lab 2 and Lab 3
+2. **Start with the first lab**: `labs/010-azure_open_ai_chat_api.py`
+3. Run labs sequentially from 010 through 170
+4. Execute Python files directly:
+   ```bash
+   python labs/010-azure_open_ai_chat_api.py
+   ```
 
 
 ## 🛠️ Common Tasks
@@ -176,31 +203,34 @@ Or simply close VS Code.
 - **Solution**: Rebuild the container:
   - `Ctrl+Shift+P` / `Cmd+Shift+P` → "Dev Containers: Rebuild Container"
 
-### MCP Server connection issues
+### Azure authentication issues
 
-**Issue**: GitHub Copilot Chat can't connect to MCP server
+**Issue**: Authentication errors when running labs
 - **Solution**: 
-  1. Verify `.vscode/mcp.json` configuration is correct
-  2. Ensure MCP server is running
-  3. Check environment variables in `.env`
-  4. Restart VS Code
+  1. Ensure you're logged in with Azure CLI: `az login`
+  2. For shared resources, verify correct tenant: `az account show`
+  3. Check that `.env` file exists with all required variables
+  4. Verify you have proper role assignments (Azure AI Developer, Cognitive Services OpenAI User)
+  5. Try logging out and back in: `az logout` then `az login`
 
 ## 📚 Next Steps
 
 Once your environment is set up:
 
-1. ✅ Complete Lab 1: Integrate Wikipedia MCP Server with Copilot Chat
-2. ✅ Complete Lab 2: Build your own MCP server with FastMCP
-3. ✅ Complete Lab 3: Use MCP as a plugin in Semantic Kernel
+1. ✅ Run Lab 010: Azure OpenAI Chat API basics
+2. ✅ Progress through labs sequentially (010 → 170)
+3. ✅ Complete exercises in labs 031, 081, 111, and 141
+4. ✅ Experiment with building your own AI agents
 
 ## 🔗 Additional Resources
 
 - [DevContainer Documentation](https://code.visualstudio.com/docs/devcontainers/containers)
-- [Model Context Protocol Documentation](https://modelcontextprotocol.io/introduction)
-- [Semantic Kernel Documentation](https://learn.microsoft.com/semantic-kernel/)
-- [FastMCP Documentation](https://gofastmcp.com/getting-started/welcome)
+- [Microsoft Agent Framework Documentation](https://learn.microsoft.com/en-us/agent-framework/)
+- [Microsoft Agent Framework GitHub](https://github.com/microsoft/agent-framework)
+- [Azure AI Foundry Documentation](https://learn.microsoft.com/en-us/azure/ai-foundry/)
+- [Azure OpenAI Service](https://learn.microsoft.com/en-us/azure/ai-services/openai/)
 - [Docker Documentation](https://docs.docker.com/)
 
 ---
 
-**Ready to start?** Open `labs/01_connecting_to_an_mcp_server.md` and begin your MCP journey! 🚀
+**Ready to start?** Authenticate with Azure CLI and begin with `python labs/010-azure_open_ai_chat_api.py`! 🚀
