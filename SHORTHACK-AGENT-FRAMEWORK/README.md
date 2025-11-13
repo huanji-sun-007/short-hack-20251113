@@ -183,7 +183,7 @@ labs/
 
 This project uses a pre-configured Dev Container with:
 
-- **Python 3.11**
+- **Python 3.13**
 - **Microsoft Agent Framework** pre-installed
 - **Azure SDK** for Azure OpenAI and Azure AI Foundry
 - **Azure CLI** for authentication and resource management

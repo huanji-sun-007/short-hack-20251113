@@ -1,9 +1,3 @@
-# Core Python packages
-jupyter
-jupyterlab
-ipykernel
-notebook
-
 # Microsoft Agent Framework
 agent-framework
 
