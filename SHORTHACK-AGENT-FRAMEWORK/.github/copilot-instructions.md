@@ -38,7 +38,7 @@ Labs 100 and 110 require running separate MCP servers from the `resources/` dire
 
 ## Technical Environment
 
-- **Container**: Dev Container with Python 3.11
+- **Container**: Dev Container with Python 3.13
 - **Framework**: Microsoft Agent Framework (pre-installed)
 - **Interface**: Python files executed via VS Code terminal
 - **Cloud Integration**: 
