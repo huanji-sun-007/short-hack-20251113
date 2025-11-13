@@ -1,141 +1,110 @@
-# Azure OpenAI Sora Video Generation Web Application
+# GitHub Copilot HVE (Hypervelocity Engineering) Hands-On Lab
 
-A simple web application for generating videos using Azure OpenAI Sora. This application provides a clean, intuitive interface for users to create videos from natural language prompts.
+## 🧠 Introduction
 
-## Features
+This project provides hands-on labs to explore **GitHub Copilot** and **Hypervelocity Engineering** and learn how to maximize AI-assisted development productivity. You'll learn how to customize GitHub Copilot with project-specific instructions, use advanced chat modes, and implement real-world development workflows.
 
-- **Simple Web Interface**: Clean, responsive UI for video generation
-- **Natural Language Prompts**: Generate videos using descriptive text prompts
-- **Real-time Status Updates**: Track video generation progress with live status polling
-- **Video Preview & Download**: View generated videos directly in the browser or download them
-- **Azure OpenAI Sora Integration**: Powered by cutting-edge AI video generation technology
+By the end of these labs, you'll be able to:
 
-## Quick Start
+- Set up and configure GitHub Copilot in VS Code
+- Use slash commands, chat participants, variables, and Agent mode effectively
+- Create custom instructions and chat modes for your project
 
-### Prerequisites
+## ✅ Pre-requisites
 
-- Python 3.8+ 
-- Azure OpenAI API access with Sora model enabled
-- Virtual environment (recommended)
+Before you begin, ensure you have:
 
-### Installation
+- **Visual Studio Code** installed
+- **GitHub Copilot** subscription
+- Basic knowledge of software development concepts
+- Familiarity with your project's technology stack
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd MINIHACK-HVE
-   ```
+## 🛠️ Setup Instructions
 
-2. **Create and activate virtual environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On macOS/Linux
-   # or
-   venv\Scripts\activate     # On Windows
-   ```
+1. **Fork or Clone this repository.**
 
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
+2. **Open the project in Visual Studio Code.**
 
-4. **Set up environment variables**
-   Create a `.env` file in the root directory:
-   ```env
-   AZURE_OPENAI_API_KEY=your_api_key_here
-   AZURE_OPENAI_ENDPOINT=your_endpoint_here
-   AZURE_OPENAI_API_VERSION=2024-02-15-preview
-   ```
-
-5. **Run the application**
-   ```bash
-   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-   ```
-
-6. **Access the application**
-   Open your browser and navigate to: `http://localhost:8000`
-
-## Usage
-
-1. **Enter a Prompt**: Describe the video you want to generate in natural language
-2. **Set Parameters**: Configure duration, width, and height (optional)
-3. **Generate**: Click the generate button to start video creation
-4. **Monitor Progress**: Watch real-time status updates during generation
-5. **View Result**: Preview and download your generated video
-
-## Project Structure
+## 📁 Project Structure
 
 ```
-├── app/
-│   ├── main.py                 # FastAPI application entry point
-│   ├── api/
-│   │   └── video.py           # Video generation API endpoints
-│   ├── models/
-│   │   └── video.py           # Pydantic models for requests/responses
-│   ├── services/
-│   │   └── azure_sora.py      # Azure OpenAI Sora service integration
-│   ├── static/                # Frontend files
-│   │   ├── index.html         # Main web interface
-│   │   ├── main.js            # Frontend JavaScript logic
-│   │   └── style.css          # Application styling
-│   └── storage/               # Generated video storage
-├── doc/                       # Documentation
-├── tests/                     # Test files
-├── userstories/              # Project user stories
-├── requirements.txt          # Python dependencies
-└── README.md                 # This file
+├── .copilot-tracking/      # Sample PBIs for hands-on exercises
+│   └── pbi/
+│       ├── pbi-001.md      # Create a Daily Fruit Prices API
+│       └── pbi-002.md      # Create the IaC with Terraform
+├── .github/         # GitHub Copilot configuration templates
+├── docs/                   # Lab instructions and guides
+│   └── basic/              # Beginner tutorials
+│       ├── step-1-setup.md
+│       ├── step-2-simple-chat-usage.md
+│       └── step-3-chat-customization.md
+└── README.md              # This file
 ```
 
-## API Documentation
+## 🚀 Quick Start
 
-The application provides a REST API for video generation. Access the interactive API documentation at:
-- Swagger UI: `http://localhost:8000/api/docs`
-- OpenAPI JSON: `http://localhost:8000/openapi.json`
+1. Open the project in VS Code
+2. Complete the following labs
 
-### Key Endpoints
+## 🧪 Lab Descriptions
 
-- `POST /api/generate` - Start video generation
-- `GET /api/status/{job_id}` - Check generation status  
-- `GET /api/download/{file_id}` - Download generated video
+### 🔹 Lab 1: Getting Started with GitHub Copilot
 
-## Development
+Master the fundamentals of GitHub Copilot through three progressive steps:
 
-### Running Tests
+**Step 1: Set Up GitHub Copilot**  
+Install and configure GitHub Copilot in VS Code, understand the available features, and prepare your development environment.
 
-```bash
-# Run all tests
-pytest
+**Step 2: Using GitHub Copilot Chat**  
+Master slash commands, chat participants, variables, and Agent mode. Understand how to effectively communicate with GitHub Copilot to get the best results.
 
-# Run with coverage
-pytest --cov=app tests/
-```
+**Step 3: Customizing GitHub Copilot**  
+Create custom instructions and chat modes tailored to your project needs. Learn how to enhance Copilot's context awareness for your specific development scenarios.
 
-### Development Setup
+**Step 4: Set Up Project-Specific Copilot Configuration**  
+Define your own `copilot-instructions.md` and `engineering-fundamentals.md` files in the `.github` directory.
 
-```bash
-# Install development dependencies
-pip install pytest pytest-cov
+> **Note:** See the [microsoft/edge-ai](https://github.com/microsoft/edge-ai) repository. See the [prompt-builder.chatmode.md](https://github.com/microsoft/edge-ai/blob/main/.github/chatmodes/prompt-builder.chatmode.md) for the builder tool.
 
-# Run in development mode
-uvicorn app.main:app --reload --log-level debug
-```
+Predefined chat modes and instructions for this lab will be shared through download link.
 
-## Contributing
+**📄 Lab Files:**
+- [`docs/basic/step-1-setup.md`](docs/basic/step-1-setup.md)
+- [`docs/basic/step-2-simple-chat-usage.md`](docs/basic/step-2-simple-chat-usage.md)
+- [`docs/basic/step-3-chat-customization.md`](docs/basic/step-3-chat-customization.md)
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests for new functionality
-5. Ensure all tests pass
-6. Submit a pull request
+### 🔹 Lab 2: Implement Daily Fruit Prices API
 
-## Support
+Try to create a chat mode which can generate actionable implementation plans from a Product Backlog Item (PBI) and then implement the solution.
 
-For issues and questions:
-- Check the [documentation](./doc/)
-- Review existing [issues](issues)
-- Create a new issue if needed
+**What you'll do:**
+1. Review the PBI requirements for a Daily Fruit Prices API
+2. Use a chat mode to create a detailed implementation plan
+3. Follow the plan to implement the API
+4. Test and validate the implementation
 
-## License
+**📄 Lab Files:**
+- [`.copilot-tracking/pbi/pbi-001.md`](.copilot-tracking/pbi/pbi-001.md) - PBI requirements
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+### 🔹 Lab 3: Implement Terraform Infrastructure 
+
+Create a chat mode to visualize the architecture.
+
+**What you'll do:**
+1. Review the PBI requirements for Terraform infrastructure
+2. Use the chat mode defined in Lab 2 to create an implementation plan
+3. Implement the Terraform code following the plan
+4. Use a chat mode to generate architecture diagrams from your Terraform code
+5. Document and review the infrastructure design
+
+**📄 Lab Files:**
+- [`.copilot-tracking/pbi/pbi-002.md`](.copilot-tracking/pbi/pbi-002.md) - PBI requirements
+
+## 📚 References
+
+- [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
+- [GitHub Copilot in VS Code](https://code.visualstudio.com/docs/copilot/overview)
+- [GitHub Copilot Chat](https://docs.github.com/en/copilot/using-github-copilot/asking-github-copilot-questions-in-your-ide)
+- [Prompt Engineering for GitHub Copilot](https://docs.github.com/en/copilot/using-github-copilot/prompt-engineering-for-github-copilot)
+
+---
