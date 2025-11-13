@@ -15,8 +15,8 @@ By the end of this step, you'll know how to:
 
 - Open and use the Copilot Chat panel
 - Use slash commands (`/`) for quick actions
-- Use chat participants (`@`) for domain-specific help
-- Use chat variables (`#`) for context
+- Use chat extensions (`@`) for domain-specific help
+- Use chat context (`#`) for context
 - Switch between AI models for better responses
 - Leverage Agent mode for multi-step tasks
 - Configure and manage Copilot's tools
@@ -25,8 +25,8 @@ By the end of this step, you'll know how to:
 1. Access Copilot Chat
 2. Ask questions in Chat mode
 3. Use slash commands (/)
-4. Use chat participants (@)
-5. Use chat variables (#)
+4. Use chat extensions (@)
+5. Use chat context (#)
 6. Switch between AI models
 7. Use Agent mode and tools
 
@@ -46,7 +46,7 @@ Before using Copilot Chat, ensure you have completed Step 1 (GitHub Copilot exte
 
    - You should see a chat interface with a text input box at the bottom
    - The placeholder text might say "Ask me anything…"
-   - A mode dropdown should be visible (likely defaulting to "Ask" or "Chat")
+   - A mode dropdown should be visible (likely defaulting to "Ask" or "Agent")
 
 ### 2. Asking Questions in Chat (Ask Mode)
 
@@ -96,11 +96,11 @@ Slash commands are quick shortcuts for common tasks. Type `/` in the chat input 
 
 > **Note**: Slash commands save time by eliminating the need for full natural language questions.
 
-### 4. Using Chat Participants (@)
+### 4. Using Chat Extensions (@)
 
-Chat participants are specialized assistants for specific domains. Type `@` to bring expertise into the conversation.
+Chat extensions are specialized assistants for specific domains. Type `@` to bring expertise into the conversation.
 
-**Useful @ participants:**
+**Useful @ extensions:**
 
 - `@workspace` – Expert on your current project's codebase
   - Example: `@workspace summarize the purpose of this project`
@@ -111,34 +111,34 @@ Chat participants are specialized assistants for specific domains. Type `@` to b
 - `@terminal` – Familiar with shell commands and terminal operations
   - Example: `@terminal search for "HVE" under the current directory`
   
-- `@azure` – Cloud-specific participants (if enabled)
+- `@azure` – Cloud-specific extensions (if enabled)
   - Example: `@azure how many resource groups do I have now?`
 
 **How to use:**
 
 4-1. **Type `@`** in the chat input
 
-   - A drop-down list of available participants appears
+   - A drop-down list of available extensions appears
 
-4-2. **Select a participant** (or continue typing to filter)
+4-2. **Select an extension** (or continue typing to filter)
 
    Example: `@workspace`
 
-4-3. **Type your query** after the participant name
+4-3. **Type your query** after the extension name
 
    Example: `@workspace find any TODO comments in the project`
 
 4-4. **Press Enter**
 
-   - The response uses that participant's specialized knowledge
+   - The response uses that extension's specialized knowledge
 
-> **Tip**: Using @participants tells Copilot which context to emphasize for more accurate answers.
+> **Tip**: Using @extensions tells Copilot which context to emphasize for more accurate answers.
 
-### 5. Using Chat Variables (#)
+### 5. Using Chat Context (#)
 
-Chat variables inject specific context into your prompts. Type `#` to see available variables.
+Chat context injects specific context into your prompts. Type `#` to see available variables.
 
-**Common # variables:**
+**Common # context:**
 
 - `#file` – Inserts current file content
 - `#selection` – Inserts currently selected text
@@ -163,8 +163,8 @@ Chat variables inject specific context into your prompts. Type `#` to see availa
 
 > **Tip**: Combine special prefixes for powerful queries:
 > - `/explain` (slash command) for quick actions
-> - `@terminal` (participant) for domain expertise  
-> - `#selection` (variable) for precise context
+> - `@terminal` (extensions) for domain expertise  
+> - `#selection` (context) for precise context
 
 ### 6. Switching Between AI Models
 
@@ -263,7 +263,7 @@ Create a Python calculator app with add, subtract, multiply, and divide function
 
 ### Summary
 
-You've mastered GitHub Copilot Chat! You can now use slash commands (`/`), chat participants (`@`), and variables (`#`) to get context-aware help, switch AI models for different needs, and leverage Agent mode for automated tasks.
+You've mastered GitHub Copilot Chat! You can now use slash commands (`/`), chat extensions (`@`), and context (`#`) to get context-aware help, switch AI models for different needs, and leverage Agent mode for automated tasks.
 
 ### Next
 
