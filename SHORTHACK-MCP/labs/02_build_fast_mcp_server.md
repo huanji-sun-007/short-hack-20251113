@@ -123,7 +123,7 @@ FastMCP supports two transport modes:
 Run the MCP server from your terminal:
 
 ```bash
-python3 servers/mcp_server.py
+python servers/mcp_server.py
 ```
 
 You should see output indicating the server is running on `http://0.0.0.0:8080`.
@@ -139,7 +139,7 @@ Now that your MCP server is running, you can use it as a plugin in GitHub Copilo
 Ensure the server is running in a terminal:
 
 ```bash
-python3 servers/mcp_server.py
+python servers/mcp_server.py
 ```
 
 **2. Configure VS Code MCP settings**
@@ -239,7 +239,7 @@ Here's how the pieces fit together:
 
 ### Copilot can't connect to the server
 
-- Ensure the server is running (`python3 servers/mcp_server.py`)
+- Ensure the server is running (`python servers/mcp_server.py`)
 - Verify `.vscode/mcp.json` has the correct URL
 - Restart VS Code if needed
 

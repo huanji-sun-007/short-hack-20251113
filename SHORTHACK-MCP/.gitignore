@@ -86,7 +86,6 @@ docs/_build/
 target/
 
 # VS Code
-.vscode/
 
 # Spyder project settings
 .spyderproject
