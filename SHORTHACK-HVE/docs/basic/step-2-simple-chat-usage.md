@@ -216,7 +216,7 @@ Agent mode uses various tools to perform tasks. You can control which tools are 
 
 8-1. **Switch to Agent mode** if not already in it
 
-8-2. **Click "Tools" button (visible in Agent mode, right to the mode dropdown)**
+8-2. **Click "Tools" button (visible in Agent mode, to the right of the mode dropdown)**
 
    - See the list of available tools with their current status
 
