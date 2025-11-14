@@ -196,7 +196,7 @@ Copilot Chat has two powerful modes for making changes to your code: **Edit mode
    - Creates project folder structure automatically
    - Creates multiple files (`calculator.py`, `test_calculator.py`)
    - Runs tests automatically using pytest
-   - Shows progress and results in the chat  
+   - Shows progress and results in the chat
    - Fixes errors and re-runs if tests fail
 
 > **Important**: Agent mode is powerful but can be unpredictable. Start with small tasks and always review proposed changes before approving them.
