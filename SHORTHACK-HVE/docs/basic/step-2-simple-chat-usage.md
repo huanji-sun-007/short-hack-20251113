@@ -24,12 +24,10 @@ By the end of this step, you'll know how to:
 ### Quick Flow
 1. Access Copilot Chat
 2. Ask questions in Chat mode
-3. Use chat commands (/)
-4. Use chat extensions (@)
-5. Use chat context (#)
-6. Switch between AI models
-7. Use Edit and Agent modes
-8. Manage tools in Agent mode
+3. Use chat commands (/), extensions (@), and context (#)
+4. Switch between AI models
+5. Use Edit and Agent modes
+6. Manage tools in Agent mode
 
 ---
 
@@ -124,7 +122,7 @@ Copilot Chat supports three special prefixes to enhance your prompts: **chat com
 > - `/explain #selection` – explains selected code
 > - `@terminal how do I run #file` – gets terminal command for current file
 
-### 6. Switching Between AI Models
+### 4. Switching Between AI Models
 
 Copilot Chat allows you to switch between different AI models (e.g., GPT-3.5, GPT-4) for different needs.
 
@@ -135,21 +133,21 @@ Copilot Chat allows you to switch between different AI models (e.g., GPT-3.5, GP
 
 **How to switch:**
 
-6-1. **Locate the model selector** in the Copilot Chat panel
+4-1. **Locate the model selector** in the Copilot Chat panel
 
    - Usually a drop-down menu near the top showing current model (e.g., "GPT-4")
 
-6-2. **Click the model name/drop-down**
+4-2. **Click the model name/drop-down**
 
    - A list of available models appears (GPT-4, GPT-3.5, Claude, etc.)
 
-6-3. **Select the model** you want to use
+4-3. **Select the model** you want to use
 
    - Subsequent responses will use the selected model
 
 > **Note**: Model availability depends on your Copilot subscription (Individual vs. Business) and organizational settings.
 
-### 7. Using Edit and Agent Modes
+### 5. Using Edit and Agent Modes
 
 Copilot Chat has two powerful modes for making changes to your code: **Edit mode** and **Agent mode**. Understanding the difference helps you choose the right tool for your task.
 
@@ -161,19 +159,19 @@ Copilot Chat has two powerful modes for making changes to your code: **Edit mode
 
 **Try Edit Mode First:**
 
-7-1. **Locate the mode dropdown** in Copilot Chat panel (default: "Ask")
+5-1. **Locate the mode dropdown** in Copilot Chat panel (default: "Ask")
 
-7-2. **Click and select "Edit"** mode
+5-2. **Click and select "Edit"** mode
 
-7-3. **Open a file** in your editor (or create a new one)
+5-3. **Open a file** in your editor (or create a new one)
 
-7-4. **Type the following request** in the chat:
+5-4. **Type the following request** in the chat:
 
    ```
    Create a Python calculator app with add, subtract, multiply, and divide functions under `calculator_app` folder. Add unit tests and run them to verify everything works.
    ```
 
-7-5. **Press Enter** and observe Edit mode behavior:
+5-5. **Press Enter** and observe Edit mode behavior:
 
    - Copilot edits the currently open file
    - Shows a diff preview of proposed changes
@@ -183,15 +181,15 @@ Copilot Chat has two powerful modes for making changes to your code: **Edit mode
 
 **Now Try Agent Mode:**
 
-7-6. **Switch to "Agent" mode** using the mode dropdown
+5-6. **Switch to "Agent" mode** using the mode dropdown
 
-7-7. **Type the same request** but with more scope:
+5-7. **Type the same request** but with more scope:
 
    ```
    Create a Python calculator app with add, subtract, multiply, and divide functions under `calculator_app` folder. Add unit tests and run them to verify everything works.
    ```
 
-7-8. **Press Enter** and observe Agent mode behavior:
+5-8. **Press Enter** and observe Agent mode behavior:
 
    - Creates project folder structure automatically
    - Creates multiple files (`calculator.py`, `test_calculator.py`)
@@ -201,7 +199,7 @@ Copilot Chat has two powerful modes for making changes to your code: **Edit mode
 
 > **Important**: Agent mode is powerful but can be unpredictable. Start with small tasks and always review proposed changes before approving them.
 
-### 8. Managing Tools in Agent Mode
+### 6. Managing Tools in Agent Mode
 
 Agent mode uses various tools to perform tasks. You can control which tools are available.
 
@@ -214,19 +212,19 @@ Agent mode uses various tools to perform tasks. You can control which tools are 
 
 **How to manage tools:**
 
-8-1. **Switch to Agent mode** if not already in it
+6-1. **Switch to Agent mode** if not already in it
 
-8-2. **Click "Tools" button (visible in Agent mode, to the right of the mode dropdown)**
+6-2. **Click "Tools" button (visible in Agent mode, to the right of the mode dropdown)**
 
    - See the list of available tools with their current status
 
-8-3. **Toggle tools on/off** as needed
+6-3. **Toggle tools on/off** as needed
 
    - Disable Terminal tool if you don't want Copilot running commands
    - Disable Write File for read-only mode (analysis only)
    - Keep Test Runner enabled to automatically verify code
 
-8-4. **Review and approve actions** during execution
+6-4. **Review and approve actions** during execution
 
    - Copilot asks for confirmation before destructive actions
    - Review diffs before applying file changes
