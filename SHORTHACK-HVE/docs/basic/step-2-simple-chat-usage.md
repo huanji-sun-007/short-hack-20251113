@@ -14,21 +14,20 @@ Make sure you have completed:
 By the end of this step, you'll know how to:
 
 - Open and use the Copilot Chat panel
-- Use slash commands (`/`) for quick actions
+- Use chat commands (`/`) for quick actions
 - Use chat extensions (`@`) for domain-specific help
 - Use chat context (`#`) for context
 - Switch between AI models for better responses
-- Leverage Agent mode for multi-step tasks
-- Configure and manage Copilot's tools
+- Leverage Edit and Agent modes for different types of tasks
+- Manage and configure Copilot's tools in Agent mode
 
 ### Quick Flow
 1. Access Copilot Chat
 2. Ask questions in Chat mode
-3. Use slash commands (/)
-4. Use chat extensions (@)
-5. Use chat context (#)
-6. Switch between AI models
-7. Use Agent mode and tools
+3. Use chat commands (/), extensions (@), and context (#)
+4. Switch between AI models
+5. Use Edit and Agent modes
+6. Manage tools in Agent mode
 
 ---
 
@@ -71,102 +70,59 @@ By default, Copilot Chat opens in **Ask mode** for interactive Q&A without modif
 
 > **Tip**: Ask mode only reads your code and provides suggestions; it won't automatically change files.
 
-### 3. Using Slash Commands (/)
+### 3. Using Special Chat Prefixes (/, @, #)
 
-Slash commands are quick shortcuts for common tasks. Type `/` in the chat input to see available commands.
+Copilot Chat supports three special prefixes to enhance your prompts: **chat commands** (`/`), **chat extensions** (`@`), and **chat context** (`#`). These can be combined for powerful, context-aware queries.
 
-**Common slash commands:**
+**Chat Commands (/) – Quick shortcuts for common tasks:**
 - `/list` – Lists available tools
 - `/explain` – Explains selected code or error messages
 - `/fix` – Proposes a fix for selected code problems
 - `/clear` – Starts a new chat session (clears context)
-- ...
 
-**How to use:**
-
-3-1. **(Optional) Select relevant text** in the editor
-
-3-2. **Type `/` followed by the command** (e.g., `/help`)
-
-   - Pick from the suggestions that appear after typing `/`
-
-3-3. **Press Enter** to execute the command
-
-   - For `/help`: Copilot lists available commands
-
-> **Note**: Slash commands save time by eliminating the need for full natural language questions.
-
-### 4. Using Chat Extensions (@)
-
-Chat extensions are specialized assistants for specific domains. Type `@` to bring expertise into the conversation.
-
-**Useful @ extensions:**
-
+**Chat Extensions (@) – Domain-specific expertise:**
 - `@workspace` – Expert on your current project's codebase
   - Example: `@workspace summarize the purpose of this project`
-  
 - `@vscode` – Expert on Visual Studio Code settings and commands
   - Example: `@vscode change the font size bigger`
-  
 - `@terminal` – Familiar with shell commands and terminal operations
   - Example: `@terminal search for "HVE" under the current directory`
-  
 - `@azure` – Cloud-specific extensions (if enabled)
   - Example: `@azure how many resource groups do I have now?`
 
-**How to use:**
-
-4-1. **Type `@`** in the chat input
-
-   - A drop-down list of available extensions appears
-
-4-2. **Select an extension** (or continue typing to filter)
-
-   Example: `@workspace`
-
-4-3. **Type your query** after the extension name
-
-   Example: `@workspace find any TODO comments in the project`
-
-4-4. **Press Enter**
-
-   - The response uses that extension's specialized knowledge
-
-> **Tip**: Using @extensions tells Copilot which context to emphasize for more accurate answers.
-
-### 5. Using Chat Context (#)
-
-Chat context injects specific context into your prompts. Type `#` to see available variables.
-
-**Common # context:**
-
+**Chat Context (#) – Inject specific context into prompts:**
 - `#file` – Inserts current file content
 - `#selection` – Inserts currently selected text
 - `#function`, `#class`, `#line` – Inserts code under cursor
 - `#block` – Inserts current code block
 - `#terminal` – Refers to terminal output
 
-**How to use:**
+**Try it out – Combined usage:**
 
-5-1. **Type `#`** in the chat box
+3-1. **Select some code** in your editor (any function or code block)
 
-   - Suggestions appear similar to slash and @ commands
+3-2. **Type the following** in the chat input:
 
-5-2. **Choose the appropriate context variable**
+   ```
+   @workspace /explain #selection
+   ```
 
-   Example: `Rewrite the following function with better names: #selection`
+3-3. **Press Enter**
 
-5-3. **Press Enter**
+   - Copilot uses workspace context (`@workspace`) to explain (`/explain`) your selected code (`#selection`)
+   - You can also try: `/fix #selection` or `@terminal how do I run #file`
 
-   - Copilot replaces `#selection` with actual selected code
-   - No need to manually copy/paste code
+3-4. **Experiment with different combinations:**
 
-> **Tip**: Combine special prefixes for powerful queries:
-> - `/explain` (slash command) for quick actions
-> - `@terminal` (extensions) for domain expertise  
-> - `#selection` (context) for precise context
+   - Type `/`, `@`, or `#` to see available options
+   - Mix and match based on your needs
 
-### 6. Switching Between AI Models
+> **Tip**: Combining these prefixes creates powerful, context-aware queries. For example:
+> - `@workspace find all TODO comments` – searches your project
+> - `/explain #selection` – explains selected code
+> - `@terminal how do I run #file` – gets terminal command for current file
+
+### 4. Switching Between AI Models
 
 Copilot Chat allows you to switch between different AI models (e.g., GPT-3.5, GPT-4) for different needs.
 
@@ -177,93 +133,108 @@ Copilot Chat allows you to switch between different AI models (e.g., GPT-3.5, GP
 
 **How to switch:**
 
-6-1. **Locate the model selector** in the Copilot Chat panel
+4-1. **Locate the model selector** in the Copilot Chat panel
 
    - Usually a drop-down menu near the top showing current model (e.g., "GPT-4")
 
-6-2. **Click the model name/drop-down**
+4-2. **Click the model name/drop-down**
 
    - A list of available models appears (GPT-4, GPT-3.5, Claude, etc.)
 
-6-3. **Select the model** you want to use
+4-3. **Select the model** you want to use
 
    - Subsequent responses will use the selected model
 
 > **Note**: Model availability depends on your Copilot subscription (Individual vs. Business) and organizational settings.
 
-### 7. Using Agent Mode (and Tools)
+### 5. Using Edit and Agent Modes
 
-Agent mode is Copilot's most powerful feature, allowing it to perform multi-step actions autonomously.
+Copilot Chat has two powerful modes for making changes to your code: **Edit mode** and **Agent mode**. Understanding the difference helps you choose the right tool for your task.
 
-**What is Agent mode?**
+**Mode comparison:**
 
-- **Ask mode**: Provides suggestions and explanations only
-- **Agent mode**: Can edit files, run commands, and iterate automatically
+- **Ask mode**: Provides suggestions and explanations only (no code changes)
+- **Edit mode**: Makes focused edits to specific files you're working on
+- **Agent mode**: Autonomous multi-step actions across your entire project
 
-**How to enable Agent mode:**
+**Try Edit Mode First:**
 
-7-1. **Locate the mode dropdown** in Copilot Chat panel (default: "Ask")
+5-1. **Locate the mode dropdown** in Copilot Chat panel (default: "Ask")
 
-7-2. **Click and select "Agent"** mode
+5-2. **Click and select "Edit"** mode
 
-   - UI may change to indicate Agent mode is active
+5-3. **Open a file** in your editor (or create a new one)
 
-**What Agent mode does:**
+5-4. **Type the following request** in the chat:
 
-- Analyzes your request and plans steps
-- Opens/reads multiple files in your project
-- Writes or modifies code automatically
-- Runs tests or terminal commands
-- Shows progress in the chat
+   ```
+   Create a Python calculator app with add, subtract, multiply, and divide functions under `calculator_app` folder. Add unit tests and run them to verify everything works.
+   ```
 
-**Example request in Agent mode:**
+5-5. **Press Enter** and observe Edit mode behavior:
 
-```
-Create a Python calculator app with add, subtract, multiply, and divide functions under `calculator_app` folder. Add unit tests and run them to verify everything works.
-```
+   - Copilot edits the currently open file
+   - Shows a diff preview of proposed changes
+   - You can accept or reject the changes
+   - Works on one file at a time
+   - You need to manually create test file and run tests separately
 
-**Agent mode will:**
+**Now Try Agent Mode:**
 
-- Create the project folder structure
-- Create `calculator.py` with the four math functions
-- Create `test_calculator.py` with unit tests
-- Run the tests automatically using pytest
-- Show test results in the chat
-- Fix any errors if tests fail and re-run them
+5-6. **Switch to "Agent" mode** using the mode dropdown
 
-**Managing Tools in Agent Mode:**
+5-7. **Type the same request** but with more scope:
 
-7-3. **Click "Tools" or "Manage Tools"** button (visible in Agent mode)
+   ```
+   Create a Python calculator app with add, subtract, multiply, and divide functions under `calculator_app` folder. Add unit tests and run them to verify everything works.
+   ```
 
-   - See available tools: Read File, Write File, Terminal, Test Runner, etc.
+5-8. **Press Enter** and observe Agent mode behavior:
 
-7-4. **Toggle tools on/off** as needed
-
-   - Disable Terminal tool if you don't want Copilot running commands
-   - Disable Write File for read-only mode
-
-7-5. **Review and approve actions**
-
-   - Copilot asks for confirmation before destructive actions
-   - Example: `"I will run npm run test. Proceed? (y/n)"`
-   - Review diffs before applying file changes
-
-**Try Agent mode with simple tasks:**
-
-- `Create a new Python file that prints 'Hello World'`
-- `Refactor this function to use better variable names`
-
-7-6. **Switch back to Ask mode** when done
-
-   - Click the mode dropdown and select "Ask" or "Edit"
+   - Creates project folder structure automatically
+   - Creates multiple files (`calculator.py`, `test_calculator.py`)
+   - Runs tests automatically using pytest
+   - Shows progress and results in the chat
+   - Fixes errors and re-runs if tests fail
 
 > **Important**: Agent mode is powerful but can be unpredictable. Start with small tasks and always review proposed changes before approving them.
+
+### 6. Managing Tools in Agent Mode
+
+Agent mode uses various tools to perform tasks. You can control which tools are available.
+
+**Available tools:**
+- **Read File** – Reads file contents
+- **Write File** – Creates or modifies files
+- **Terminal** – Runs shell commands
+- **Test Runner** – Executes unit tests
+- And more...
+
+**How to manage tools:**
+
+6-1. **Switch to Agent mode** if not already in it
+
+6-2. **Click "Tools" button (visible in Agent mode, to the right of the mode dropdown)**
+
+   - See the list of available tools with their current status
+
+6-3. **Toggle tools on/off** as needed
+
+   - Disable Terminal tool if you don't want Copilot running commands
+   - Disable Write File for read-only mode (analysis only)
+   - Keep Test Runner enabled to automatically verify code
+
+6-4. **Review and approve actions** during execution
+
+   - Copilot asks for confirmation before destructive actions
+   - Review diffs before applying file changes
+   - Check terminal commands before they execute
 
 ---
 
 ### Summary
 
-You've mastered GitHub Copilot Chat! You can now use slash commands (`/`), chat extensions (`@`), and context (`#`) to get context-aware help, switch AI models for different needs, and leverage Agent mode for automated tasks.
+You've mastered GitHub Copilot Chat! You can now use chat commands (`/`), chat extensions (`@`), and chat context (`#`) to get context-aware help, switch AI models for different needs, and leverage Edit and Agent modes for different types of code changes.
 
 ### Next
 
